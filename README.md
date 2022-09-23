@@ -3,8 +3,8 @@
 ## Developer Names
 [Talha Asif](https://github.com/TAsif)
 [Madhi Nagarajan](https://github.com/madhi-naga)
-[Jarrod Colwell]()
-[Andrew Carvalino]()
+[Jarrod Colwell](https://github.com/JarrodColwell)
+[Andrew Carvalino](https://github.com/acarvalino)
 [Ali Tabar](https://github.com/ali-tab)
 
 ## Date of project start
