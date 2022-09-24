@@ -2,6 +2,7 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{hyperref}
 
 \title{Development Plan\\\progname}
 
@@ -20,8 +21,7 @@
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
+Sept 21/22 & Talha & Updating Workflow Plan\\
 ... & ... & ...\\
 \bottomrule
 \end{tabularx}
@@ -41,10 +41,31 @@ Date2 & Name(s) & Description of changes\\
 
 \section{Workflow Plan}
 
+Git Workflow: 
 \begin{itemize}
-	\item How will you be using git, including branches, pull request, etc.?
-	\item How will you be managing issues, including template issues, issue
-	classificaiton, etc.?
+	\item \emph{develop} branch will be the single source of truth, where changes on it are reviewed by the team before they get merged in. Thus the \emph{develop} branch will have restricted permissions on it, preventing direct merges without admin overwrite and only one developer will be the admin, Talha
+	\item Any changes have to be on their own branch, and a PR has to be cut with a full green checklist to get it merged into \emph{develop}
+	\item The checklist will grow as development on the application continues, currently the checklist is a single item, where the PR must have two approvals from the team. The future checklist items are as planned:
+	\begin{itemize}
+		\item Entire test run has to be successful to ensure \emph{develop} is in a healthy state
+		\item Test coverage delta should not be reduced, unless redundant tests are taken out
+		\item Spotbugs must pass, enforcing healthy code practices
+		\item Snyk checks must pass, ensuring the packages used do not have vulnerabilities
+	\end{itemize}
+	\item Each PR must have at minimum a description filled out and a relevant feature ticket must have a Jira issue attached along with it
+\end{itemize}
+
+Issue Tracking - \href{https://flickpicker.atlassian.net/jira/software/projects/CAP/boards/1}{Jira}: 
+\begin{itemize}
+	\item All development changes need a descriptive ticket cut for it before it is ready for code review. Automation will link the PR to the ticket and vice versa as well
+	\item The status of the ticket must be updated on the board, most importantly if it is in To Do so multiple developers do not start working on the same feature
+	\item Points will be arbitrary for the ticket, based off how much work the developer working on it thinks it will be. It is going to be an indication of how complex the work is for the reviewers
+	\item Utilize Jira's ticket types to have issue classifications:
+	\begin{itemize}
+		\item Story: Ticket describing a new feature
+		\item Bug: Fixing existing code
+		\item Task: Small changes that do not fall in either of the above category
+	\end{itemize}
 \end{itemize}
 
 \section{Proof of Concept Demonstration Plan}
