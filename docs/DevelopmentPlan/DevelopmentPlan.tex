@@ -40,7 +40,7 @@ Sept 24/22 & Talha & Updating Sections 1-3\\
 This documentation details the entire development plan, from team meetings, to the workflow, all the way to the technology Flick Picker will use. 7eam fully understand their responsibilities and knows the flow our application will follow. 
 
 \section{Team Meeting Plan}
-There will be an ad hoc meeting nearly weekly to ensure the team is on the same page, where a time is picked that works for all five team members. The reason for the meeting will also be clearly stated before meeting, and we will start as soon as everyone is in the call.
+There will be an ad hoc meeting weekly to ensure the team is on the same page, where a time is picked that works for all five team members. The reason for the meeting will also be clearly stated before meeting, and we will start as soon as everyone is in the call.
 
 \section{Team Communication Plan}
 7eam will utilize Discord as their main form of communication, a server has been created with all forms of communication in it currently. It is expected if something urgently needs a specific team member, they will be responsive within 24 hours.
@@ -48,20 +48,20 @@ There will be an ad hoc meeting nearly weekly to ensure the team is on the same 
 \section{Team Member Roles}
 Everyone shares responsibilities and is required to be flexible when needed, but there are areas of development each individual specializes in to keep work split evenly.
 
-\begin{tabular}{hp}
+\begin{table}[hp]
 \caption{Team Developer Roles} \label{TblDevRoles}
 \begin{tabularx}{\textwidth}{llX}
 \toprule
 \textbf{Team Member} & \textbf{Role}\\
 \midrule
 Talha & DevOps, Full-Stack Developer\\
-Jarrod & Back-End Developer\\
-Madhi & Back-End Developer\\
-Andrew & Front-End Developer\\
-Ali & Front-End Developer\\
+Jarrod & Back-End Developer, Back-End Tester\\
+Madhi & Back-End Developer, Back-End Tester\\
+Andrew & Front-End Developer, Front-End Tester\\
+Ali & Front-End Developer, Front-End Tester\\
 \bottomrule
 \end{tabularx}
-\end{tabular}
+\end{table}
 
 \section{Workflow Plan}
 Git Workflow: 
@@ -72,7 +72,7 @@ Git Workflow:
 	\begin{itemize}
 		\item Entire test run has to be successful to ensure \emph{develop} is in a healthy state
 		\item Test coverage delta must not be reduced unless redundant tests are taken out
-		\item Spotbugs must pass, enforcing healthy code practices
+		\item Spotbugs or it's equivalent must pass
 		\item Snyk checks must pass, ensuring the packages used do not have vulnerabilities
 	\end{itemize}
 	\item Each PR must have at minimum a description filled out, and a relevant feature ticket must have a Jira issue attached along with it
@@ -86,8 +86,8 @@ Issue Tracking - \href{https://flickpicker.atlassian.net/jira/software/projects/
 	\begin{itemize}
 		\item Descriptive means the ticket must have a title and acceptance criteria (AC) to complete the ticket
 	\end{itemize}
-	\item The status of the ticket must be updated on the board. Most importantly, if it is in ``To Do" so multiple developers do not start working on the same feature
-	\item Points will be arbitrary for the ticket, based on how much work the developer is working on it thinks it will be. It is going to be an indication of how complex the work is for the reviewers
+	\item The status of the ticket must be updated on the board. Most importantly, ticket status should be ``In Progress" so multiple developers do not start working on the same feature
+	\item Points will be arbitrary for the ticket, estimated by the developer who is working on it, this will be an indication of how complex the work is for the reviewers
 	\item Utilize Jira's ticket types to have issue classifications:
 	\begin{itemize}
 		\item Story: Ticket describing a new feature
@@ -99,9 +99,9 @@ Issue Tracking - \href{https://flickpicker.atlassian.net/jira/software/projects/
 \subsection{Example Feature Workflow}
 An example developer workflow for a feature will be as follows:
 \begin{enumerate}
-	\item Jira ticket is cut with a description and AC, assigned to a developer, then the ticket is moved to ``In Progress" while it is developed
-	\item Branch is made for development and then marked ``Ready for Review" when the owner thinks the AC is met
-	\item Reviewers ensure AC is met and healthy coding practices are followed
+	\item Jira ticket is created with a description and AC, assigned to a developer, then the ticket is moved to ``In Progress" while it is in development
+	\item Branch is made for development and then marked ``Ready for Review" when the owner thinks the AC are met
+	\item Reviewers ensure AC are met and healthy coding practices are followed
 	\item PR is merged, and the ticket is moved to ``Done"
 \end{enumerate}
 
