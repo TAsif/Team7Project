@@ -2,6 +2,7 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{hyperref}
 
 \title{Development Plan\\\progname}
 
@@ -54,21 +55,52 @@ demonstrate during your proof of concept demonstration to convince yourself that
 you will be able to overcome this risk?
 
 \section{Technology}
+	
 
+\subsection{Languages/Frameworks}
+
+Flick Picker will be a full-stack web application. The frontend layer of the application will be built with React.js. React.js is a web application framework that is based on the Node.js environment. The programming language behind React.js is TypeScript, a flavour of JavaScript. TypeScript ensures code correctness due to its strongly-typed nature, and catches any JavaScript runtime errors prior to code compilation.
+
+Another key portion of the Flick Picker application is the backend. The backend will be a RESTful API that acts as intermediary between the frontend and the database to manage user data. It will also contain the core logic of our movie recommendation system and our movie matching algorithm. The choice of framework for the backend will be Express.js, a Node.js framework for RESTful APIs. Our language choice is TypeScript, as we felt that it would be the most effective to keep languages consistent at a full-stack level.
+
+\subsection{Testing}
+Within both the frontend and backend, unit tests will be present to look for sufficient code quality and correctness. The developer will write appropriate unit tests to reach desired code coverage, and tests will be ran prior to each code deployment. Unit testing will be done with use of Jest, a JavaScript/TypeScript testing framework. Jest also contains functionality for producing code coverage results.
+
+Integration tests will also implemented to test the application as a whole, ensuring that it functions together as expected. Cucumber.js will be the choice of framework for integration tests. Gherkin is the language used for Cucumber tests. Gherkin follows the "Given, When, Then" structure for each "step" within a test. Cucumber.js also utilizes JavaScript/TypeScript when defining step functions (the logic behind steps). 
+
+
+\subsection{Linting}
+Our team will follow the \href{https://github.com/airbnb/javascript}{Airbnb JavaScript Style Guide} for our linting standards. Since our team utilizes TypeScript, our project will use a flavour of ESLint that includes the Airbnb standards (\href{https://www.npmjs.com/package/eslint-config-airbnb-typescript}{Airbnb ESLint Package}).
+
+\subsection{Storage \& Deployment}
+For our database storage and app deployment preferences, our team will utilize Google's Firebase ecosystem. We noticed that Firebase has a variety of features that are easy to setup and are scalable. Our database will be hosted through the Cloud Firestore feature. Cloud Firestore allows us to store and query our data within a NoSQL database. 
+
+Our application deployment will be done through Firebase Hosting, as this product is already optimized for applications built with the Node.js runtime environment. Firebase Hosting also features one-click app deployments.
+
+\subsection{Continuous Integration (CI)}
+To reiterate from Section 4, our project will utilize a variety of tools for CI. Our workflow plan will be executed for every Pull Request (PR). Below are a list of tools used by our workflow plan.
 \begin{itemize}
-\item Specific programming language
-\item Specific linter tool (if appropriate)
-\item Specific unit testing framework
-\item Investigation of code coverage measuring tools
-\item Specific plans for Continuous Integration (CI), or an explanation that CI
-  is not being done
-\item Specific performance measuring tools (like Valgrind), if
-  appropriate
-\item Libraries you will likely be using?
-\item Tools you will likely be using?
+	\item GitHub Workflow: For seamless integration with our GitHub repositories, we will implement our workflow plans through GitHub Workflows.  
+	\item Node.js \& npm: Since both our frontend and backend is built on Node.js, our workflows will use it for building, testing, and linting checks. For example, GitHub Workflow will execute \verb| npm build| to check whether the project builds successfully. Note that GitHub Workflow supports Node.js.
+	\item Snyk/Dependabot: This tool is used to check for any dependency vulnerabilities. Any vulnerabilities will be alerted, so that we could handle this accordingly.
+\end{itemize}
+
+\subsection{Tools/Libraries Needed}
+\textbf{Authentication:}
+As introduced in Section 6.4, the Firebase ecosystem will be a key part in our application development. Firebase Authentication will be utilized for secure user sign-up and login. Firebase Authentication also features login authentication through Google and Facebook accounts. Integrating Google \& Facebook authentication will be a key stretch goal of ours, as it provides users a more convenient method for logging into our application. 
+\\ \\
+\noindent \textbf{Performance Metrics:} 
+Firebase Performance Monitoring will allow our team to monitor our application's performance metrics. The dashboard features key metrics like response times, success rates, payload sizes etc. Throughout the development process, our team will continue to monitor this dashboard to troubleshoot or optimize our application's performance. 
+\\ \\
+\noindent \textbf{External APIs Required:} 
+Our application will need to fetch movie and TV show data from one or more external APIs. Below is a list of APIs that we may integrate with our project. Note that these may be subject to change, as there are many factors to consider including potential cost, availability, dataset size, response data etc.
+\begin{itemize}
+	\item \href{https://www.omdbapi.com/}{Open Movie Database (OMDb API)} - This is a free Movie \& TV Show database API. Note that there is a max of 1000 requests per day for the free version. Depending on our needs, we may need to consider paying for the premium tier.
+	\item \href{https://myanimelist.net/apiconfig/references/api/v2}{MyAnimeList API} - This is a database API for Anime Movies \& TV shows.  
 \end{itemize}
 
 \section{Coding Standard}
+As mentioned within Section 6.3, our team will be following the Airbnb JavaScript Style Guide coupled with ESLint for our style standards. For our code approval process, it will contain strict guidelines to ensure code quality. Developers must add at least 2 reviewers to their Pull Request (PR). Once these reviewers have thoroughly read, understood, and agree with the code changes proposed, then they can proceed with approving the PR. The PR must also pass our Continuous Integration checks (described in Section 4), which will ensure that the project builds successfully, passes all unit tests etc.
 
 \section{Project Scheduling}
 
