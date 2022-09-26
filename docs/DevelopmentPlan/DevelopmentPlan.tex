@@ -2,6 +2,7 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{hyperref}
 
 \title{Development Plan\\\progname}
 
@@ -14,38 +15,103 @@
 
 \begin{document}
 
+\maketitle
+
+\newpage
+
 \begin{table}[hp]
 \caption{Revision History} \label{TblRevisionHistory}
 \begin{tabularx}{\textwidth}{llX}
 \toprule
 \textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 \midrule
-Date1 & Name(s) & Description of changes\\
-Date2 & Name(s) & Description of changes\\
-... & ... & ...\\
+Sept 21/22 & Talha & Updating Workflow Plan\\
+Sept 24/22 & Talha & Updating Sections 1-3\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \newpage
 
-\maketitle
+\tableofcontents
 
-\wss{Put your introductory blurb here.}
+\newpage
+
+This documentation details the entire development plan, from team meetings, to the workflow, all the way to the technology Flick Picker will use. 7eam fully understand their responsibilities and knows the flow our application will follow. 
 
 \section{Team Meeting Plan}
+There will be an ad hoc meeting weekly to ensure the team is on the same page, where a time is picked that works for all five team members. The reason for the meeting will also be clearly stated before meeting, and we will start as soon as everyone is in the call.
 
 \section{Team Communication Plan}
+7eam will utilize Discord as their main form of communication, a server has been created with all forms of communication in it currently. It is expected if something urgently needs a specific team member, they will be responsive within 24 hours.
 
 \section{Team Member Roles}
+Everyone shares responsibilities and is required to be flexible when needed, but there are areas of development each individual specializes in to keep work split evenly.
+
+\begin{table}[hp]
+\caption{Team Developer Roles} \label{TblDevRoles}
+\begin{tabularx}{\textwidth}{llX}
+\toprule
+\textbf{Team Member} & \textbf{Role}\\
+\midrule
+Talha & DevOps, Full-Stack Developer\\
+Jarrod & Back-End Developer, Back-End Tester\\
+Madhi & Back-End Developer, Back-End Tester\\
+Andrew & Front-End Developer, Front-End Tester\\
+Ali & Front-End Developer, Front-End Tester\\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \section{Workflow Plan}
-
+Git Workflow: 
 \begin{itemize}
-	\item How will you be using git, including branches, pull request, etc.?
-	\item How will you be managing issues, including template issues, issue
-	classificaiton, etc.?
+	\item \emph{develop} branch will be the single source of truth, where the team reviews changes before they get merged. Thus the \emph{develop} branch will have restricted permissions on it, preventing direct merges without admin overwrite, and only one developer will be the admin, Talha
+	\item Any changes have to be on their branch, and a PR has to be cut with a full green checklist to get it merged into \emph{develop}
+	\item The checklist will grow as development on the application continues, currently, the checklist is a single item, where the PR must have two approvals from the team. The future checklist items are as planned:
+	\begin{itemize}
+		\item Entire test run has to be successful to ensure \emph{develop} is in a healthy state
+		\item Test coverage delta must not be reduced unless redundant tests are taken out
+		\item Spotbugs or it's equivalent must pass
+		\item Snyk checks must pass, ensuring the packages used do not have vulnerabilities
+	\end{itemize}
+	\item Each PR must have at minimum a description filled out, and a relevant feature ticket must have a Jira issue attached along with it
+	\item If a feature has an attached ticket, the PR title must start with [CAP-\#\#] and then a title
+	\item Every time a PR is made, automation will ping \#{}pr-bot on Discord so the team is aware of changes being made
 \end{itemize}
+
+Issue Tracking - \href{https://flickpicker.atlassian.net/jira/software/projects/CAP/boards/1}{Jira}: 
+\begin{itemize}
+	\item All development changes need a descriptive ticket cut before it is ready for code review. Automation will link the PR to the ticket and vice versa as well
+	\begin{itemize}
+		\item Descriptive means the ticket must have a title and acceptance criteria (AC) to complete the ticket
+	\end{itemize}
+	\item The status of the ticket must be updated on the board. Most importantly, ticket status should be ``In Progress" so multiple developers do not start working on the same feature
+	\item Points will be arbitrary for the ticket, estimated by the developer who is working on it, this will be an indication of how complex the work is for the reviewers
+	\item Utilize Jira's ticket types to have issue classifications:
+	\begin{itemize}
+		\item Story: Ticket describing a new feature
+		\item Bug: Fixing existing code
+		\item Task: Small changes that do not fall in either of the above categories
+	\end{itemize}
+\end{itemize}
+
+\subsection{Example Feature Workflow}
+An example developer workflow for a feature will be as follows:
+\begin{enumerate}
+	\item Jira ticket is created with a description and AC, assigned to a developer, then the ticket is moved to ``In Progress" while it is in development
+	\item Branch is made for development and then marked ``Ready for Review" when the owner thinks the AC are met
+	\item Reviewers ensure AC are met and healthy coding practices are followed
+	\item PR is merged, and the ticket is moved to ``Done"
+\end{enumerate}
+
+\subsection{Example Documentation Workflow}
+An example documentation workflow will be as follows:
+\begin{enumerate}
+	\item Asynchronous discussion on Discord is done to choose which sections of a documentation to update
+	\item Branch is made for updates and then marked ``Ready for Review" when the owner thinks the documentation has been sufficiently written
+	\item PR is merged
+\end{enumerate}
 
 \section{Proof of Concept Demonstration Plan}
 
