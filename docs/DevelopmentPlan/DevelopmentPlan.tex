@@ -27,6 +27,9 @@
 \midrule
 Sept 21/22 & Talha & Updating Workflow Plan\\
 Sept 24/22 & Talha & Updating Sections 1-3\\
+Sept 25/22 & Madhi & Updating Sections 6 and 7\\
+Sept 26/22 & Ali & Updating Sections 5 and 8\\
+Sept 26/22 & Madhi & Small revisions \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -37,7 +40,7 @@ Sept 24/22 & Talha & Updating Sections 1-3\\
 
 \newpage
 
-This documentation details the entire development plan, from team meetings, to the workflow, all the way to the technology Flick Picker will use. 7eam fully understand their responsibilities and knows the flow our application will follow. 
+This documentation details the entire development plan, from team meetings, to the workflow, all the way to the technology that Flick Picker will use. 7eam fully understand their responsibilities, project goals, and upcoming challenges.
 
 \section{Team Meeting Plan}
 There will be an ad hoc meeting weekly to ensure the team is on the same page, where a time is picked that works for all five team members. The reason for the meeting will also be clearly stated before meeting, and we will start as soon as everyone is in the call.
@@ -56,7 +59,7 @@ Everyone shares responsibilities and is required to be flexible when needed, but
 \midrule
 Talha & DevOps, Full-Stack Developer\\
 Jarrod & Back-End Developer, Back-End Tester\\
-Madhi & Back-End Developer, Back-End Tester\\
+Madhi & Full-Stack Developer, Full-Stack Tester\\
 Andrew & Front-End Developer, Front-End Tester\\
 Ali & Front-End Developer, Front-End Tester\\
 \bottomrule
@@ -72,8 +75,8 @@ Git Workflow:
 	\begin{itemize}
 		\item Entire test run has to be successful to ensure \emph{develop} is in a healthy state
 		\item Test coverage delta must not be reduced unless redundant tests are taken out
-		\item Spotbugs or it's equivalent must pass
-		\item Snyk checks must pass, ensuring the packages used do not have vulnerabilities
+		\item Custom Linting rules (ESLint + Airbnb styling) must pass
+		\item Snyk/Dependabot checks must pass, ensuring the packages used do not have vulnerabilities
 	\end{itemize}
 	\item Each PR must have at minimum a description filled out, and a relevant feature ticket must have a Jira issue attached along with it
 	\item If a feature has an attached ticket, the PR title must start with [CAP-\#\#] and then a title
@@ -132,7 +135,7 @@ Another key portion of the Flick Picker application is the backend. The backend 
 \subsection{Testing}
 Within both the frontend and backend, unit tests will be present to look for sufficient code quality and correctness. The developer will write appropriate unit tests to reach desired code coverage, and tests will be ran prior to each code deployment. Unit testing will be done with use of Jest, a JavaScript/TypeScript testing framework. Jest also contains functionality for producing code coverage results.
 
-Integration tests will also implemented to test the application as a whole, ensuring that it functions together as expected. Cucumber.js will be the choice of framework for integration tests. Gherkin is the language used for Cucumber tests. Gherkin follows the "Given, When, Then" structure for each "step" within a test. Cucumber.js also utilizes JavaScript/TypeScript when defining step functions (the logic behind steps). 
+Integration tests will also implemented to test the application as a whole, ensuring that it functions together as expected. Cucumber.js will be the choice of framework for integration tests. Gherkin is the language used for Cucumber tests. Gherkin follows the ``Given, When, Then" structure for a set of ``steps" AKA a test case. Cucumber.js also utilizes JavaScript/TypeScript when defining step functions (the logic behind steps). 
 
 
 \subsection{Linting}
