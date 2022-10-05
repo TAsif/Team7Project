@@ -3,6 +3,7 @@
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{fullpage}
+\usepackage{graphicx}
 
 \input{../Comments}
 \input{../Common}
@@ -14,6 +15,9 @@
 \date{\today}
 	
 \maketitle
+\vspace*{\fill}
+Created From: Volere, Requirements Specification Template, Edition 18
+
 
 ~\newpage \pagenumbering{roman}
 
@@ -26,20 +30,26 @@
 \begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
 \toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
 \midrule
-Oct 2/22 & 1.0 & Copying Volere Template and updating sections\\
+Oct 1/22 & 0.0 & Copying Volere Template and updating sections\\
+Oct 1/22 & 0.1 & Adding Sections 1, 3, 5\\
+Oct 2/22 & 0.2 & Adding Section 6\\
 \bottomrule
 \end{tabularx}
 
 ~\newpage \pagenumbering{arabic}
 
 \section{The Purpose of the Project}
-a
 
 \subsection{The User Business or Background of the Project Effort}
-a
+The business aims to make finding shows across groups of friends with differing preferences easier by streamlining the process from start to finish. As a quick summary, users will be able to input their preferences, make groups with their friends, and the group will get recommendations based on all their preferences. In addition, an opportunity arose in the market after COVID passed as large groups can create host gatherings for any events, one such that this application can select.
 
 \subsection{Goals of the Project}
-a
+Goals can shift as development continues, entirely losing scope on the developers' passion for why the application started. Thus there will only be a few immediate goals to capture the passion that developers currently have and will continue to uphold in the future:
+\begin{itemize}
+	\item Provide a means of choosing a Movie, TV show, or Anime to watch immediately in a large friend group, which they all enjoy
+	\item Users can be recommended a Movie, TV show, or Anime individually as well.
+	\item Minimize the number of advertisements while using the application
+\end{itemize}
 
 \section{The Stakeholders}
 a
@@ -69,31 +79,75 @@ a
 a
 
 \section{Constraints}
-a
 
 \subsection{Solution Constraints}
-a
+There are no specific constraints the stakeholders have asked to be on the product regarding the solution. So instead, 7eam deems it necessary to have a general form of constraint on the development of Flick Picker that is the following:
+\begin{itemize}
+	\item Flick Picker must have in-depth tests on any part of the application before releasing it to the users and also follow a strict and healthy software engineering process
+\end{itemize}
+There are no specific technological constraints. However, the technology stack must follow industry standards.
 
 \subsection{Implementation Environment of the Current System}
-a
+The application will be deployed on a website, so the restrictions of a browser follow.
 
 \subsection{Partner or Collaborative Applications}
-a
+N/A
 
 \subsection{Off-the-Shelf Software}
-a
+The list of Movies, TV Shows, and Anime will be polled from two separate APIs, which is the following:
+\begin{itemize}
+	\item MyAnimeList for data on Anime
+	\item OMDB for data on TV Shows and Movies
+\end{itemize}
 
 \subsection{Anticipated Workplace Environment}
-a
+As Flick Picker is a browser application, 7eam expects users to use the application on their desktops or phones. Thus the application must be optimized for both possible settings, relying on a responsive layout. However, the users' physical workplace has no bearing on the design, as they can use it whenever necessary. 
 
 \subsection{Schedule Constraints}
-a
+The schedule is the same as the one Dr. Smith has provided us with
+
+\begin{tabular}{ |p{9.7cm} l|}
+	\hline
+	Team Formed, Project Selected & September 19\\
+	\hline
+	Problem Statement, Development Plan & September 26\\
+	\hline
+	Requirements Document Revision 0 & October 5\\
+	\hline
+	Hazard Analysis 0 & October 19\\
+	\hline
+	V\&V Plan Revision 0 & November 2\\
+	\hline
+	Proof of Concept Demonstration & November 14--25\\
+	\hline
+	Design Document Revision 0 & January 18\\
+	\hline
+	Revision 0 Demonstration & February 6--February 17\\
+	\hline
+	V\&V Report Revision 0 & March 8\\
+	\hline
+	Final Demonstration (Revision 1) & March 20--March 31\\
+	\hline
+	EXPO Demonstration & April TBD\\
+	\hline
+	Final Documentation (Revision 1)\newline 
+	- Problem Statement\newline
+	- Development Plan\newline
+	- Requirements Document\newline
+	- Hazard Analysis\newline
+	- Design Document\newline
+	- V\&V Plan\newline
+	- V\&V Report\newline
+	- User's Guide\newline
+	- Source Code\newline & April 5\\
+	\hline
+\end{tabular}
 
 \subsection{Budget Constraints}
-a
+The expenses for this application must not exceed \$500, and there are only five developers working on 7eam.
 
 \subsection{Enterprise Constraints}
-a
+N/A
 
 \section{Naming Conventions and Terminology}
 a
@@ -102,31 +156,55 @@ a
 a
 
 \section{Relevant Facts and Assumptions}
-a
 
 \subsection{Relevant Facts}
-a
+There is no existing solution 7eam has found that fills a similar role as selecting a Movie, TV Show or Anime based on the preferences of a group of users.
+
 
 \subsection{Business Rules}
-a
+N/A
 
 \subsection{Assumptions}
-a
+There are a few assumptions 7eam deems necessary to see regarding Flick Picker's capabilities and what it will not do:
+\begin{itemize}
+	\item Flick Picker will not provide a means to watch the selected show directly through the application
+	\item Flick Picker will suggest the best movie, tv show, or anime for the group. This may violate the preferences of a member or multiple members of the group.
+	\item The browser on which the application is used, through any device, is not deprecated
+\end{itemize}
 
 \section{The Scope of the Work}
-a
 
 \subsection{The Current Situation}
-a
+As Flick Picker is being built from the ground up, no existing business processes exist. However, 7eam has agreed to follow a rigorous development process, which is not changing. The developers must make a pull request against the `develop' branch to make any changes, which two people must review before merging. If it is a code change, then tests must run on the deployed code, all passing and getting two reviews before merging.
 
 \subsection{The Context of the Work}
-a
+\begin{center}
+	\includegraphics[scale=1]{contextDiagram.png}
+\end{center}
 
 \subsection{Work Partitioning}
-a
+\subsubsection*{Business Event List}
+\begin{tabularx}{\textwidth}{|p{4cm}p{6cm}X|}
+\toprule {\bf Event Name} & {\bf Input and Output} & {\bf Summary of BUC}\\
+\hline
+MyAnimeList/OMBD are polled & TV Show, Movie, and Anime Data (in) & Collect information about the shows to display to users \\
+\hline
+MongoDB data is updated & User data updated (out) & Any updates to user data are stored \\
+\hline
+MongoDB data is queried & User data retrieved (in) & Fetches everything needed for the user after login \\
+\hline
+Code is updated & GitHub redeploys new changes (in/out) & Updates the FE or BE deployment any time there is a merge to server \\
+\hline
+Deprecated library is used & Vulnerability detection blocks changes (in) & Deployment protection such that libraries are safe to use \\
+\hline
+Code does not match style & AirBnB style guide (in), Linter updates code (in/out) & Enforces the style guide on FE/BE development \\
+\hline
+External login is queried & External authentication validates user (in) & Allows users to log in with industry standard authentication providers \\
+\hline
+\end{tabularx}
 
-\subsection{Specifying a Business Use Case (BUC}
-a
+\subsection{Specifying a Business Use Case (BUC)}
+N/A as summary of BUCs are above.
 
 \section{Business Data Model and Data Dictionary}
 a
