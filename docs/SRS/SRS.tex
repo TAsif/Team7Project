@@ -3,6 +3,7 @@
 \usepackage{tabularx}
 \usepackage{booktabs}
 \usepackage{fullpage}
+\usepackage{graphicx}
 
 \input{../Comments}
 \input{../Common}
@@ -31,7 +32,7 @@ Created From: Volere, Requirements Specification Template, Edition 18
 \midrule
 Oct 1/22 & 0.0 & Copying Volere Template and updating sections\\
 Oct 1/22 & 0.1 & Adding Sections 1, 3, 5\\
-
+Oct 2/22 & 0.2 & Adding Section 6\\
 \bottomrule
 \end{tabularx}
 
@@ -45,7 +46,8 @@ The business aims to make finding shows across groups of friends with differing 
 \subsection{Goals of the Project}
 Goals can shift as development continues, entirely losing scope on the developers' passion for why the application started. Thus there will only be a few immediate goals to capture the passion that developers currently have and will continue to uphold in the future:
 \begin{itemize}
-	\item Provide a means of choosing a show to watch immediately in a large friend group, which they all enjoy
+	\item Provide a means of choosing a movie, TV show, or anime to watch immediately in a large friend group, which they all enjoy
+	\item Users can be recommended a movie, TV show, or anime individually as well.
 	\item Minimize the number of advertisements while using the application
 \end{itemize}
 
@@ -89,13 +91,13 @@ There are no specific technological constraints. However, the technology stack m
 The application will be deployed on a website, so the restrictions of a browser follow.
 
 \subsection{Partner or Collaborative Applications}
-Not Applicable
+N/A
 
 \subsection{Off-the-Shelf Software}
 The list of Movies, TV Shows, and Animes will be polled from two separate APIs, which is the following:
 \begin{itemize}
-	\item GET IT
-	\item FROM JARROD
+	\item MyAnimeList for data on Animes
+	\item OMDB for data on TV Shows and Movies
 \end{itemize}
 
 \subsection{Anticipated Workplace Environment}
@@ -145,7 +147,7 @@ The schedule is the same as the one Dr. Smith has provided us with
 The expenses for this application must not exceed \$500, and there are only five developers working on 7eam.
 
 \subsection{Enterprise Constraints}
-Not Applicable
+N/A
 
 \section{Naming Conventions and Terminology}
 a
@@ -156,34 +158,53 @@ a
 \section{Relevant Facts and Assumptions}
 
 \subsection{Relevant Facts}
-There is no existing solution 7eam has found that fills a similar role as selecting a Movie, TV Show or Anime based on users' preferences in a group.
+There is no existing solution 7eam has found that fills a similar role as selecting a Movie, TV Show or Anime based on the preferences of a group of users.
 
 
 \subsection{Business Rules}
-Not Applicable
+N/A
 
 \subsection{Assumptions}
 There are a few assumptions 7eam deems necessary to see regarding Flick Picker's capabilities and what it will not do:
 \begin{itemize}
 	\item Flick Picker will not provide a means to watch the selected show directly through the application
-	\item If the group shares no preferences, then the recommendations will be skipping the preferences of some individual
+	\item Flick Picker will suggest the best movie, tv show, or anime for the group. This may violate the preferences of a member or multiple members of the group.
 	\item The browser on which the application is used, through any device, is not deprecated
 \end{itemize}
-
 
 \section{The Scope of the Work}
 
 \subsection{The Current Situation}
-a
+As Flick Picker is being built from the ground up, no existing business processes exist. However, 7eam has agreed to follow a rigorous development process, which is not changing. The developers must make a pull request against the `develop' branch to make any changes, which two people must review before merging. If it is a code change, then tests must run on the deployed code, all passing and getting two reviews before merging.
 
 \subsection{The Context of the Work}
-a
+\begin{center}
+	\includegraphics[scale=1]{contextDiagram.png}
+\end{center}
 
 \subsection{Work Partitioning}
-a
+\subsubsection*{Business Event List}
+\begin{tabularx}{\textwidth}{|p{4cm}p{6cm}X|}
+\toprule {\bf Event Name} & {\bf Input and Output} & {\bf Summary of BUC}\\
+\hline
+MyAnimeList/OMBD are polled & TV Show, Movie, and Anime Data (in) & Collect information about the shows to display to users \\
+\hline
+MongoDB data is updated & User data updated (out) & Any updates to user data are stored \\
+\hline
+MongoDB data is queried & User data retrieved (in) & Fetches everything needed for the user after login \\
+\hline
+Code is updated & GitHub redeploys new changes (in/out) & Updates the FE or BE deployment any time there is a merge to server \\
+\hline
+Deprecated library is used & Vulnerability detection blocks changes (in) & Deployment protection such that libraries are safe to use \\
+\hline
+Code does not match style & AirBnB style guide (in), Linter updates code (in/out) & Enforces the style guide on FE/BE development \\
+\hline
+External login is queried & External authentication validates user (in) & Allows users to log in with industry standard authentication providers \\
+\hline
+\end{tabularx}
 
 \subsection{Specifying a Business Use Case (BUC)}
-a
+N/A as summary of BUCs are above.
 
 \section{Business Data Model and Data Dictionary}
 a
