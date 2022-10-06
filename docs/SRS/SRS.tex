@@ -250,16 +250,35 @@ Additionally, attributes that are self explanatory are omitted from the Data Dic
 \end{tabularx}
 
 \section{The Scope of the Product}
-a
+
 
 \subsection{Product Boundary}
-a
+\includegraphics[scale=0.6]{SystemBoundariesDiagram.png}
 
 \subsection{Product Use Case Table}
-a
+\begin{tabularx}{\textwidth}{|p{4cm}p{6cm}X|}
+	\toprule {\bf Use Case} & {\bf Actors} & {\bf Description}\\
+	\hline
+	1.0 Create Account & Primary: User & Prompts User for login and password, then stores both in the Database \\
+	\hline
+	1.1 Verify Login Details \newline (Included in Use Case 1.0) & None & Searches Database for the username and password provided and verifies whether both correspond to the same account \\
+	\hline
+	1.2 Invalid Login \newline (Extends Use Case 1.0) & None & If the login or password are invalid, shows an error message to the user indicating that the login info was incorrect \\
+	\hline
+	2.0 Create Preferences & Primary: User & User inputs their movie/show preferences, which the Database stores and connects to their account \\
+	\hline
+	3.0 Movie Selection & Primary: User & User search for movie/show recommendations based on the input preferences, and the system outputs a list of recommended media based on those preferences \\
+	\hline
+	3.1 Provide Feedback & Primary: User & Allows User to label a result with "like", "neutral", or "dislike" which will impact what kinds of media the system shows in its results for that User \\
+	\hline
+	4.0 Create Group & Primary: User/Group Owner \newline Secondary: Other Users & Allows User to create a group and send invites to Other Users \\
+	\hline
+	5.0 Group Search & Primary: User/Group Owner \newline Secondary: Other Group Users & The Group Owner (user who created the group) will initialte the search for a movie/show, to which the system will respond with a result that takes into account the individual users' preferences \\
+	\hline
+	\end{tabularx}
 
 \subsection{Individual Product Use Cases}
-a
+Please refer to Section 8.2 for individual Use Case descriptions.
 
 \section{Functional Requirements}
 a
