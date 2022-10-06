@@ -34,6 +34,7 @@ Oct 1/22 & 0.0 & Copying Volere Template and updating sections\\
 Oct 1/22 & 0.1 & Adding Sections 1, 3, 5\\
 Oct 2/22 & 0.2 & Adding Section 6\\
 Oct 5/22 & 0.3 & Adding Section 2\\
+Oct 5/22 & 0.4 & Adding Section 7\\
 \bottomrule
 \end{tabularx}
 
@@ -224,13 +225,29 @@ External login is queried & External authentication validates user (in) & Allows
 N/A as summary of BUCs are above.
 
 \section{Business Data Model and Data Dictionary}
-a
-
 \subsection{Business Data Model}
-a
+\begin{center}
+	\includegraphics[scale=0.12]{BusinessDataModel.png}
+\end{center}
 
 \subsection{Data Dictionary}
-a
+For content of each element of the data dictionary, see the Business Data Model above.
+Additionally, attributes that are self explanatory are omitted from the Data Dictionary for document size purposes, they are assumed to be members of the data dictionary.
+
+\begin{tabularx}{\textwidth}{|p{3cm}|p{10cm}|X|}
+ 	\hline {\bf Name} & {\bf Description} & {\bf Type}\\
+	\hline
+	User & A single user of the product & Class \\
+	Group & A collection of users with one being the owner & Class \\
+	Movie & North American or European movie & Class\\
+	TV Show & North American or European television shows & Class\\
+	Anime & Japanese, Chinese, or Korean animated shows & Class\\
+	Group ID & Unique identifier for a group & \\
+	Movie ID & Unique identifier for a Movie & Attribute \\
+	TV Show ID & Unique identifier for a TV Show & Attribute \\
+	Anime ID & Unique identifier for an Anime & Attribute \\
+	\hline
+\end{tabularx}
 
 \section{The Scope of the Product}
 a
