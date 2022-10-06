@@ -281,10 +281,91 @@ Additionally, attributes that are self explanatory are omitted from the Data Dic
 Please refer to Section 8.2 for individual Use Case descriptions.
 
 \section{Functional Requirements}
-a
+\noindent
 
-\subsection{Functional Requirements}
-a
+\subsection{Authentication Requirements} 
+\noindent
+
+\textbf{Requirement \#:} 1 \quad \textbf{Requirement Type:} 1 \quad \textbf{Event/Use Case: 1.0}
+\medskip
+\\\textbf{Description:} The application shall allow the user to signup/login with their email and password
+\\\textbf{Rationale:} Allows users to securely sign-in to our application
+\\\textbf{Fit Criterion:} Unauthorized users should not be able to access and use the application
+
+\bigskip
+\textbf{Requirement \#:} 2 \quad \textbf{Requirement Type:} 1 \quad \textbf{Event/Use Case: 1.0}
+\medskip
+\\\textbf{Description:} The application shall allow the user to signup/login with an existing Google/Facebook account
+\\\textbf{Rationale:} Allows users a convenient method to securely sign-in to the application 
+\\\textbf{Fit Criterion:} Unauthorized users should not be able to access and use the application
+
+\bigskip
+\textbf{Requirement \#:} 3 \quad \textbf{Requirement Type:} 1 \quad \textbf{Event/Use Case: N/A}
+\medskip
+\\\textbf{Description:} The application shall allow the user to logout of the application 
+\\\textbf{Rationale:} Allows users securely logout of the application 
+\\\textbf{Fit Criterion:} User must already be authorized and is logged-in
+
+\subsection{Profile/Group Requirements} 
+\noindent
+
+\textbf{Requirement \#:} 4 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case: 1.0}
+\medskip
+\\\textbf{Description:} The application shall allow the user to modify their profile settings (username and password)
+\\\textbf{Rationale:} Ensures that users can change their settings if needed
+\\\textbf{Fit Criterion:} Username must be unique. Password is required to be longer than 6 characters.
+
+\bigskip
+\textbf{Requirement \#:} 5 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case: 2.0}
+\medskip
+\\\textbf{Description:} The application shall allow the user to set their profile preferences 
+\\\textbf{Rationale:} Required since the application needs these preferences to efficiently recommend movies/TV shows to the user. The preferences pertain to their favourite genre, movies, TV shows, anime, actors etc.
+\\\textbf{Fit Criterion:} The user's input (eg. Movie name) should be valid
+
+\bigskip
+\textbf{Requirement \#:} 6 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case: 4.0}
+\medskip
+\\\textbf{Description:} The application shall allow the user to create a group, and specify a group name
+\\\textbf{Rationale:} Allows users to create groups so that they can find a recommendation match
+\\\textbf{Fit Criterion:} The group name must be unique.
+
+\bigskip
+\textbf{Requirement \#:} 7 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case: N/A}
+\medskip
+\\\textbf{Description:} The application shall allow the user to join a group, either through request or invite
+\\\textbf{Rationale:} Allows users to join groups so that they can find a recommendation match
+\\\textbf{Fit Criterion:} If joining a group through invite, the invite must be valid and specific to the user.
+
+\bigskip
+\textbf{Requirement \#:} 8 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case: 4.0}
+\medskip
+\\\textbf{Description:} The application shall allow the user to invite other users based on their username or email
+\\\textbf{Rationale:} Allows users to join groups so that they can find a recommendation match
+\\\textbf{Fit Criterion:} The username/email invited must be registered as a valid user in our system 
+
+\subsection{Recommendation Requirements} 
+\noindent
+
+\textbf{Requirement \#:} 9 \quad \textbf{Requirement Type:} 3 \quad \textbf{Event/Use Case: 3.0}
+\medskip
+\\\textbf{Description:} The application shall provide an ongoing list of movie/TV show recommendations to the user
+\\\textbf{Rationale:} Ensures that the user is consistently getting recommendations to find a possible match
+\\\textbf{Fit Criterion:} The recommendation provided must be an existing movie/TV show
+
+\bigskip
+\textbf{Requirement \#:} 10 \quad \textbf{Requirement Type:} 3 \quad \textbf{Event/Use Case: 3.1}
+\medskip
+\\\textbf{Description:} The application shall allow the user to "like", "neutral" or "dislike" each movie/TV show recommendation
+\\\textbf{Rationale:} Allows application to continually provide better recommendations and to find a recommendation match
+\\\textbf{Fit Criterion:} The user must respond with one of the options: "like", "neutral" or "dislike".
+
+\bigskip
+\textbf{Requirement \#:} 11 \quad \textbf{Requirement Type:} 3 \quad \textbf{Event/Use Case: 5.0}
+\medskip
+\\\textbf{Description:} The application shall notify the group once a recommendation match is found
+\\\textbf{Rationale:} The end goal is to provide the group with a recommendation match, so that they can watch that movie/show together.
+\\\textbf{Fit Criterion:} The recommendation provided must be an existing movie/TV show and has been approved ("like", "neutral") by the majority of the group. 
+
 
 \section{Non-Functional Requirements}
 a
@@ -320,31 +401,30 @@ a
 a
 
 \subsection{Performance Requirements}
-a
 
 \subsubsection{Speed and Latency Requirements}
-a
+This application shall immediately (within 1s), by human perception, respond to user input (within 1s after input) The system shall quickly login and logout the user (within 10s).
 
 \subsubsection{Safety-Critical Requirements}
-a
+The application shall handle the user's private data with care. 
 
 \subsubsection{Precision or Accuracy Requirements}
-a
+The recommendation match provided to the group shall always be the recommendation that is the most approved by the group. The match should have almost zero "dislikes" within the group (cannot always be zero due to certain circumstances). 
 
 \subsubsection{Reliability and Availability Requirements}
-a
+The web application shall be available for at least 90\% of the day, given that the servers running the application (on Firebase) are stable.
 
 \subsubsection{Robustness or Fault-Tolerance Requirements}
-a
+The application shall always provide users with continual recommendations. The application shall always determine a recommendation match.
 
 \subsubsection{Capacity Requirements}
-a
+Each user session within our application is independent of another. Therefore, there is no limit to the number of users who can use our app at once.
 
 \subsubsection{Scalability or Extensibility Requirements}
-a
+While scalability is not a major concern, the application should still be scalable in the event that it is needed to do so. 
 
 \subsubsection{Longevity Requirements}
-a
+N/A
 
 \subsection{Operational and Environmental Requirements}
 a
@@ -368,16 +448,15 @@ a
 a
 
 \subsection{Maintainability and Support Requirements}
-a
 
 \subsubsection{Maintenance Requirements}
-a
+N/A
 
 \subsubsection{Supportability Requirements}
-a
+N/A
 
 \subsubsection{Adaptability Requirements}
-a
+This product is expected to run on common web browsers (Chrome, Firefox, Edge). It is also expected to run on mobile browsers.
 
 \subsection{Security Requirements}
 a
@@ -397,19 +476,16 @@ a
 a
 
 \subsection{Cultural Requirements}
-a
 
 \subsubsection{Cultural Requirements}
-a
-
+N/A
 \subsection{Compliance Requirements}
-a
 
 \subsubsection{Legal Compliance Requirements}
-a
+N/A
 
 \subsubsection{Standards Compliance Requirements}
-a
+N/A
 
 \section{Project Issues}
 a
