@@ -36,6 +36,7 @@ Oct 2/22 & 0.2 & Adding Section 6\\
 Oct 5/22 & 0.3 & Adding Section 2\\
 Oct 5/22 & 0.4 & Adding Section 7\\
 Oct 5/22 & 0.5 & Adding Section 4\\
+Oct 5/22 & 0.6 & Adding Section 8, 10.1, 10.6\\
 \bottomrule
 \end{tabularx}
 
@@ -253,16 +254,35 @@ Additionally, attributes that are self explanatory are omitted from the Data Dic
 \end{tabularx}
 
 \section{The Scope of the Product}
-a
+
 
 \subsection{Product Boundary}
-a
+\includegraphics[scale=0.6]{SystemBoundariesDiagram.png}
 
 \subsection{Product Use Case Table}
-a
+\begin{tabularx}{\textwidth}{|p{4cm}p{6cm}X|}
+	\toprule {\bf Use Case} & {\bf Actors} & {\bf Description}\\
+	\hline
+	1.0 Create Account & Primary: User & Prompts User for login and password, then stores both in the Database \\
+	\hline
+	1.1 Verify Login Details \newline (Included in Use Case 1.0) & None & Searches Database for the username and password provided and verifies whether both correspond to the same account \\
+	\hline
+	1.2 Invalid Login \newline (Extends Use Case 1.0) & None & If the login or password are invalid, shows an error message to the user indicating that the login info was incorrect \\
+	\hline
+	2.0 Create Preferences & Primary: User & User inputs their movie/show preferences, which the Database stores and connects to their account \\
+	\hline
+	3.0 Movie Selection & Primary: User & User search for movie/show recommendations based on the input preferences, and the system outputs a list of recommended media based on those preferences \\
+	\hline
+	3.1 Provide Feedback & Primary: User & Allows User to label a result with "like", "neutral", or "dislike" which will impact what kinds of media the system shows in its results for that User \\
+	\hline
+	4.0 Create Group & Primary: User/Group Owner \newline Secondary: Other Users & Allows User to create a group and send invites to Other Users \\
+	\hline
+	5.0 Group Search & Primary: User/Group Owner \newline Secondary: Other Group Users & The Group Owner (user who created the group) will initialte the search for a movie/show, to which the system will respond with a result that takes into account the individual users' preferences \\
+	\hline
+	\end{tabularx}
 
 \subsection{Individual Product Use Cases}
-a
+Please refer to Section 8.2 for individual Use Case descriptions.
 
 \section{Functional Requirements}
 \noindent
@@ -270,21 +290,21 @@ a
 \subsection{Authentication Requirements} 
 \noindent
 
-\textbf{Requirement \#:} 1 \quad \textbf{Requirement Type:} 1 \quad \textbf{Event/Use Case:} \#
+\textbf{Requirement \#:} 1 \quad \textbf{Requirement Type:} 1 \quad \textbf{Event/Use Case: 1.0}
 \medskip
 \\\textbf{Description:} The application shall allow the user to signup/login with their email and password
 \\\textbf{Rationale:} Allows users to securely sign-in to our application
 \\\textbf{Fit Criterion:} Unauthorized users should not be able to access and use the application
 
 \bigskip
-\textbf{Requirement \#:} 2 \quad \textbf{Requirement Type:} 1 \quad \textbf{Event/Use Case:} \#
+\textbf{Requirement \#:} 2 \quad \textbf{Requirement Type:} 1 \quad \textbf{Event/Use Case: 1.0}
 \medskip
 \\\textbf{Description:} The application shall allow the user to signup/login with an existing Google/Facebook account
 \\\textbf{Rationale:} Allows users a convenient method to securely sign-in to the application 
 \\\textbf{Fit Criterion:} Unauthorized users should not be able to access and use the application
 
 \bigskip
-\textbf{Requirement \#:} 3 \quad \textbf{Requirement Type:} 1 \quad \textbf{Event/Use Case:} \#
+\textbf{Requirement \#:} 3 \quad \textbf{Requirement Type:} 1 \quad \textbf{Event/Use Case: N/A}
 \medskip
 \\\textbf{Description:} The application shall allow the user to logout of the application 
 \\\textbf{Rationale:} Allows users securely logout of the application 
@@ -293,35 +313,35 @@ a
 \subsection{Profile/Group Requirements} 
 \noindent
 
-\textbf{Requirement \#:} 4 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case:} \#
+\textbf{Requirement \#:} 4 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case: 1.0}
 \medskip
 \\\textbf{Description:} The application shall allow the user to modify their profile settings (username and password)
 \\\textbf{Rationale:} Ensures that users can change their settings if needed
 \\\textbf{Fit Criterion:} Username must be unique. Password is required to be longer than 6 characters.
 
 \bigskip
-\textbf{Requirement \#:} 5 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case:} \#
+\textbf{Requirement \#:} 5 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case: 2.0}
 \medskip
 \\\textbf{Description:} The application shall allow the user to set their profile preferences 
 \\\textbf{Rationale:} Required since the application needs these preferences to efficiently recommend movies/TV shows to the user. The preferences pertain to their favourite genre, movies, TV shows, anime, actors etc.
 \\\textbf{Fit Criterion:} The user's input (eg. Movie name) should be valid
 
 \bigskip
-\textbf{Requirement \#:} 6 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case:} \#
+\textbf{Requirement \#:} 6 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case: 4.0}
 \medskip
 \\\textbf{Description:} The application shall allow the user to create a group, and specify a group name
 \\\textbf{Rationale:} Allows users to create groups so that they can find a recommendation match
 \\\textbf{Fit Criterion:} The group name must be unique.
 
 \bigskip
-\textbf{Requirement \#:} 7 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case:} \#
+\textbf{Requirement \#:} 7 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case: N/A}
 \medskip
 \\\textbf{Description:} The application shall allow the user to join a group, either through request or invite
 \\\textbf{Rationale:} Allows users to join groups so that they can find a recommendation match
 \\\textbf{Fit Criterion:} If joining a group through invite, the invite must be valid and specific to the user.
 
 \bigskip
-\textbf{Requirement \#:} 8 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case:} \#
+\textbf{Requirement \#:} 8 \quad \textbf{Requirement Type:} 2 \quad \textbf{Event/Use Case: 4.0}
 \medskip
 \\\textbf{Description:} The application shall allow the user to invite other users based on their username or email
 \\\textbf{Rationale:} Allows users to join groups so that they can find a recommendation match
@@ -330,21 +350,21 @@ a
 \subsection{Recommendation Requirements} 
 \noindent
 
-\textbf{Requirement \#:} 9 \quad \textbf{Requirement Type:} 3 \quad \textbf{Event/Use Case:} \#
+\textbf{Requirement \#:} 9 \quad \textbf{Requirement Type:} 3 \quad \textbf{Event/Use Case: 3.0}
 \medskip
 \\\textbf{Description:} The application shall provide an ongoing list of movie/TV show recommendations to the user
 \\\textbf{Rationale:} Ensures that the user is consistently getting recommendations to find a possible match
 \\\textbf{Fit Criterion:} The recommendation provided must be an existing movie/TV show
 
 \bigskip
-\textbf{Requirement \#:} 10 \quad \textbf{Requirement Type:} 3 \quad \textbf{Event/Use Case:} \#
+\textbf{Requirement \#:} 10 \quad \textbf{Requirement Type:} 3 \quad \textbf{Event/Use Case: 3.1}
 \medskip
 \\\textbf{Description:} The application shall allow the user to "like", "neutral" or "dislike" each movie/TV show recommendation
 \\\textbf{Rationale:} Allows application to continually provide better recommendations and to find a recommendation match
 \\\textbf{Fit Criterion:} The user must respond with one of the options: "like", "neutral" or "dislike".
 
 \bigskip
-\textbf{Requirement \#:} 11 \quad \textbf{Requirement Type:} 3 \quad \textbf{Event/Use Case:} \#
+\textbf{Requirement \#:} 11 \quad \textbf{Requirement Type:} 3 \quad \textbf{Event/Use Case: 5.0}
 \medskip
 \\\textbf{Description:} The application shall notify the group once a recommendation match is found
 \\\textbf{Rationale:} The end goal is to provide the group with a recommendation match, so that they can watch that movie/show together.
@@ -355,13 +375,16 @@ a
 a
 
 \subsection{Look and Feel Requirements}
-a
+
 
 \subsubsection{Appearance Requirements}
-a
+The application will start up with a login screen with the options for the username and password of the account, with an "enter" button that does not become available until both the username and password are entered. 
+The application will notify the user if an invalid login attempt occured, or if it was successful, bring them into the main page where there will be buttons for logging out, viewing/chaning profile settings, viewing/changing 
+media preferences, and creating/joining a group.
 
 \subsubsection{Style Requirements}
-a
+The UI will be styled with a consistent and predefined colour pallet, wherein buttons, banners, and other UI elements will have a limited set of different possible colours for the developers to select from. 
+The buttons will be placed appropriately, with the size and spacing being optimal for user experience.
 
 \subsection{Usability and Humanity Requirements}
 a
@@ -443,21 +466,21 @@ N/A
 This product is expected to run on common web browsers (Chrome, Firefox, Edge). It is also expected to run on mobile browsers.
 
 \subsection{Security Requirements}
-a
+
 
 \subsubsection{Access Requirements}
-a
+The application will allow users to access only their own profile settings, while being able to view some of the information of other users.
 
 \subsubsection{Integrity Requirements}
-a
+User data will be properly stored and have sufficient protection from corruption.
 \subsubsection{Privacy Requirements}
-a
+The Developers and those with access to the database will not use or sell user info.
 
 \subsubsection{Audit Requirements}
-a
+N/A
 
 \subsubsection{Immunity Requirements}
-a
+N/A
 
 \subsection{Cultural Requirements}
 
