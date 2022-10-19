@@ -2,6 +2,8 @@
 
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{pdflscape}
+\usepackage{arydshln}
 
 \title{Hazard Analysis\\\progname}
 
@@ -35,7 +37,10 @@
 		\end{tabularx}
 \end{table}
 
-~\newpage \pagenumbering{arabic}
+	\newpage
+
+\section{Introduction}
+Before going any further with system design, it is crucial to conduct a hazard analysis of the system from an engineering perspective. The goal is to identify critical safety concerns the application users could face and the solutions to them. Hazards will be determined using the Failure Modes and Effects Analysis (FMEA) for Flick Picker.
 
 \section{Introduction}
 Before going any further with system design, it is crucial to conduct a hazard analysis of the system from an engineering perspective. The goal is to identify critical safety concerns the application users could face and the solutions to them. Hazards will be determined using the Failure Modes and Effects Analysis (FMEA) for Flick Picker.
@@ -61,8 +66,62 @@ a
 \section{Failure Modes and Effects Analysis}
 a
 
-\section{Safety Requirements}
+	\subsection{Elimination \& Mitigation Strategy}
+	a
+=======
+\section{Critical Assumptions}
 a
+	
+\begin{landscape}
+\newpage
+\section{Failure Modes and Effects Analysis}
+Below are tables containing the full Failure Modes and Effects Analysis.
+\begin{table}[hp]
+	\caption{Failure Modes and Effects 1} \label{TblFMEA1}
+	\begin{tabularx}{\linewidth}{| l | X X l X l l |}
+		\hline
+		Component & Failure Modes & Effects of Failure & Causes of Failure & Recommended Actions & SR & Ref. \\
+		\hline
+		Database & Data is deleted on accident & All user data is lost & Database Failure & Regular backups exist where data can be rolled back on demand & SR & Ref. \\
+		\hdashline
+		~ & Data is unavailable & User cannot access data & Database Failure & Refer Above & SR & Ref. \\
+		\hdashline
+		~ & Data is modified incorrectly & User data is not updated & Database Failure & System alerts if data is not modified when requested & SR & Ref. \\
+		\hline
+		Authentication & User cannot login & User cannot view recommendations or friends & Invalid Credentials & Use the correct credentials & SR & Ref. \\
+		\hline
+		\end{tabularx}
+\end{table}
+\newpage
+\begin{table}[hp]
+	\caption{Failure Modes and Effects 2} \label{TblFMEA2}
+	\begin{tabularx}{\linewidth}{| l | X X l X l l |}
+		\hline
+		Component & Failure Modes & Effects of Failure & Causes of Failure & Recommended Actions & SR & Ref. \\
+		\hline
+		Authentication & Impersonated Superadmin manipulates user's database & User data is changed on back-end, or deleted & Database Security Failure & Reset superadmin password and rollback database & SR & Ref. \\
+		\hline
+		Show Selection & Show selection misses preferences & Group will be given a recommendation which does not match all preferences & Algorithmic Error & Group has to try a new recommendation or modify their preferences as none would match & SR & Ref. \\
+		\hdashline
+		Show Selection & Show selection takes too long & Group is given recommendations too slowly & Algorithmic Error & Server must be able to handle influx of requests at busy times & SR & Ref. \\
+		\hline
+		\end{tabularx}
+\end{table}
+\newpage
+\begin{table}[hp]
+	\caption{Failure Modes and Effects 3} \label{TblFMEA3}
+	\begin{tabularx}{\linewidth}{| l | X X l X l l |}
+		\hline
+		Component & Failure Modes & Effects of Failure & Causes of Failure & Recommended Actions & SR & Ref. \\
+		\hline
+		Browser & Application Crashes & Unsaved user data can be lost & General browser crash & Reopen browser application and fill in any data that was not saved & SR & Ref. \\
+		\hline
+		Github Automation & Pipeline Not Automatically Run & The current build of will look like it has no issues but the tests were not run & GitHub Error & Manually start pipeline & SR & Ref. \\
+		\hline
+		\end{tabularx}
+\end{table}
+\end{landscape}
+>>>>>>> Stashed changes
 
 \section{Roadmap}
 a
