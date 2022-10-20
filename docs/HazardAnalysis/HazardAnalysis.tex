@@ -32,6 +32,7 @@
 		\midrule
 		October 17 & Jarrod Colwell & Created document structure\\
 		October 17 & Talha Asif & Modifying Doc Structure\\
+		October 19 & Andrew Carvalino & Definition of Hazard and Critical Assumptions\\
 		October 19 & Talha Asif & Adding Section 8\\
 		October 19 & Ali Tabar & Adding Sections 5 and 6\\
 		\bottomrule
@@ -50,7 +51,7 @@ a
 a
 
 \section{System Boundary}
-
+a
 
 \section{Scope of Hazard Analysis}
 This document will identify safety concerns and solutions that users may face via defining what a hazard is in this context, stating the critical assumptions that are being made by the system, providing a Failure Modes and Effects Analysis of the components of the system, outlining the safety requirements that are a byproduct of that analysis, and outlining a roadmap of when the hazard analysis may be consulted or further adjusted. In addition, proper background of the project will also be provided, along with the scope and purpose.
@@ -59,7 +60,11 @@ This document will identify safety concerns and solutions that users may face vi
 A hazard, as defined by Nancy Leveson, is a property or condition in the system, that may cause some sort of loss when combined with an environmental condition.
 
 \section{Critical Assumptions}
-a
+\begin{enumerate}
+	\item System will not have direct access to users' hardware (ex. specific CPU registers)
+	\item Files will not be downloaded onto the users' device without the explicit consent of the user (should that be a feature of the system)
+	\item Users' private information will not be sold or intentionally disclosed to any third parties
+\end{enumerate}
 
 \begin{landscape}
 \newpage
