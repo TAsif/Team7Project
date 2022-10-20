@@ -32,15 +32,12 @@
 		\midrule
 		October 17 & Jarrod Colwell & Created document structure\\
 		October 17 & Talha Asif & Modifying Doc Structure\\
-		... & ... & ...\\
+		October 19 & Talha Asif & Adding Section 8\\
 		\bottomrule
 		\end{tabularx}
 \end{table}
 
 	\newpage
-
-\section{Introduction}
-Before going any further with system design, it is crucial to conduct a hazard analysis of the system from an engineering perspective. The goal is to identify critical safety concerns the application users could face and the solutions to them. Hazards will be determined using the Failure Modes and Effects Analysis (FMEA) for Flick Picker.
 
 \section{Introduction}
 Before going any further with system design, it is crucial to conduct a hazard analysis of the system from an engineering perspective. The goal is to identify critical safety concerns the application users could face and the solutions to them. Hazards will be determined using the Failure Modes and Effects Analysis (FMEA) for Flick Picker.
@@ -63,65 +60,86 @@ a
 \section{Critical Assumptions}
 a
 
-\section{Failure Modes and Effects Analysis}
-a
-
-	\subsection{Elimination \& Mitigation Strategy}
-	a
-=======
-\section{Critical Assumptions}
-a
-	
 \begin{landscape}
 \newpage
 \section{Failure Modes and Effects Analysis}
 Below are tables containing the full Failure Modes and Effects Analysis.
 \begin{table}[hp]
 	\caption{Failure Modes and Effects 1} \label{TblFMEA1}
-	\begin{tabularx}{\linewidth}{| l | X X l X l l |}
+	\begin{tabularx}{\linewidth}{| l | X X l X l |}
 		\hline
-		Component & Failure Modes & Effects of Failure & Causes of Failure & Recommended Actions & SR & Ref. \\
+		Component & Failure Modes & Effects of Failure & Causes of Failure & Recommended Actions & SR \\
 		\hline
-		Database & Data is deleted on accident & All user data is lost & Database Failure & Regular backups exist where data can be rolled back on demand & SR & Ref. \\
+		Database & Data is deleted on accident & All user data is lost & Database Failure & Regular backups exist where data can be rolled back on demand & IR2, IR3 \\
 		\hdashline
-		~ & Data is unavailable & User cannot access data & Database Failure & Refer Above & SR & Ref. \\
+		~ & Data is unavailable & User cannot access data & Database Failure & Refer Above & IR7 \\
 		\hdashline
-		~ & Data is modified incorrectly & User data is not updated & Database Failure & System alerts if data is not modified when requested & SR & Ref. \\
+		~ & Data is modified incorrectly & User data is not updated & Database Failure & System alerts if data is not modified when requested & IR2 \\
 		\hline
-		Authentication & User cannot login & User cannot view recommendations or friends & Invalid Credentials & Use the correct credentials & SR & Ref. \\
+		Authentication & User cannot login & User cannot view recommendations or friends & Invalid Credentials & Use the correct credentials & AR1, PR1 \\
 		\hline
 		\end{tabularx}
 \end{table}
 \newpage
 \begin{table}[hp]
 	\caption{Failure Modes and Effects 2} \label{TblFMEA2}
-	\begin{tabularx}{\linewidth}{| l | X X l X l l |}
+	\begin{tabularx}{\linewidth}{| l | X X l X l |}
 		\hline
-		Component & Failure Modes & Effects of Failure & Causes of Failure & Recommended Actions & SR & Ref. \\
+		Component & Failure Modes & Effects of Failure & Causes of Failure & Recommended Actions & SR \\
 		\hline
-		Authentication & Impersonated Superadmin manipulates user's database & User data is changed on back-end, or deleted & Database Security Failure & Reset superadmin password and rollback database & SR & Ref. \\
+		Authentication & Impersonated Superadmin manipulates user's database & User data is changed on back-end, or deleted & Database Security Failure & Reset superadmin password and rollback database & AR2 \\
 		\hline
-		Show Selection & Show selection misses preferences & Group will be given a recommendation which does not match all preferences & Algorithmic Error & Group has to try a new recommendation or modify their preferences as none would match & SR & Ref. \\
+		Show Selection & Show selection misses preferences & Group will be given a recommendation which does not match all preferences & Algorithmic Error & Group has to try a new recommendation or modify their preferences as none would match & PR2 \\
 		\hdashline
-		Show Selection & Show selection takes too long & Group is given recommendations too slowly & Algorithmic Error & Server must be able to handle influx of requests at busy times & SR & Ref. \\
+		~ & Show selection takes too long & Group is given recommendations too slowly & Algorithmic Error & Server must be able to handle influx of requests at busy times & PR2 \\
 		\hline
 		\end{tabularx}
 \end{table}
 \newpage
 \begin{table}[hp]
 	\caption{Failure Modes and Effects 3} \label{TblFMEA3}
-	\begin{tabularx}{\linewidth}{| l | X X l X l l |}
+	\begin{tabularx}{\linewidth}{| l | X X l X l |}
 		\hline
-		Component & Failure Modes & Effects of Failure & Causes of Failure & Recommended Actions & SR & Ref. \\
+		Component & Failure Modes & Effects of Failure & Causes of Failure & Recommended Actions & SR \\
 		\hline
-		Browser & Application Crashes & Unsaved user data can be lost & General browser crash & Reopen browser application and fill in any data that was not saved & SR & Ref. \\
+		Browser & Application Crashes & Unsaved user data can be lost & General browser crash & Reopen browser application and fill in any data that was not saved & IR6 \\
 		\hline
-		Github Automation & Pipeline Not Automatically Run & The current build of will look like it has no issues but the tests were not run & GitHub Error & Manually start pipeline & SR & Ref. \\
+		Github Automation & Pipeline Not Automatically Run & The current build of will look like it has no issues but the tests were not run & GitHub Error & Manually start pipeline & IR4, IR5 \\
 		\hline
 		\end{tabularx}
 \end{table}
 \end{landscape}
->>>>>>> Stashed changes
+
+\section{Safety Requirements}
+Here are al the Requirements that have been formed by the above analysis.
+
+\subsection{Access Requirements}
+\begin{itemize}
+	\item AR1: Users can only access and modify their own data
+	\item AR2: Only a superadmin can modify the database directly, which there is only one of
+\end{itemize}
+
+\subsection{Integrity Requirements}
+\begin{itemize}
+	\item IR1: User data is not modified without their permission
+	\item IR2: Database backups occur daily
+	\item IR3: Database backups are kept for at minimum one month
+	\item IR4: CI/CD Pipeline is run before every deployment to ensure a healthy application state
+	\item IR5: CI/CD Pipeline is run on every new code change before it can be merged
+	\item IR6: Application crashes will not cause the device to stop working
+	\item IR7: Database will be available as long as the service is available
+\end{itemize}
+
+\subsection{Privacy Requirements}
+\begin{itemize}
+	\item PR1: Users have to login with their credentials to access application data
+	\item PR2: Algorithm to choose shows shall be protected
+\end{itemize}
+
+\subsection{Audit Requirements}
+\begin{itemize}
+	\item Requirements shall be easy to read and verify across the system
+\end{itemize}
 
 \section{Roadmap}
 a
