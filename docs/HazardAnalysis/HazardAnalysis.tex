@@ -33,6 +33,7 @@
 		October 17 & Jarrod Colwell & Created document structure\\
 		October 17 & Talha Asif & Modifying Doc Structure\\
 		October 19 & Talha Asif & Adding Section 8\\
+		October 19 & All & Added document content\\
 		\bottomrule
 		\end{tabularx}
 \end{table}
@@ -46,10 +47,27 @@ Before going any further with system design, it is crucial to conduct a hazard a
 a
 
 \section{Background}
-a
+Flick Picker is a web application that finds the most compatible movie, TV show, or Anime for a group of users. Users will have the ability to set preferences related to their favourite genre, actors, movies etc. Based on these preferences, the system will produce personalized movie/TV show recommendations for users. The application will then determine the most liked film within the group.    
 
 \section{System Boundary}
-a
+The list below identifies the the various components part of the system:
+\begin{enumerate}
+	\item Flick-Picker Application: This consists of 3 main components.
+	\begin{enumerate}
+	  \item Authentication: Verifies and logs the user into the system. 
+	  \item Profile Management: Stores and manages the user's profile, including their username, preferences, groups etc. Note that this data is stored 
+	  \item Recommendation System: Provides movie/TV show recommendations to users and groups.
+	\end{enumerate}
+	\item The user's Physical Device (Laptop or Phone)
+	\item External Media APIs (OMDb, MyAnimeList etc.): Our application requires these APIs to collect movie and TV show records. 
+	\item Database: Storing user data on our database, through Firebase. 
+	\& Application Hosting \& Deployments The application will be hosted through Firebase. Builds and deployments will be managed by Jenkins/GitHub Workflow.
+	\
+\end{enumerate}
+
+\noindent The system boundary includes the entire Flick-Picker Application, and application database. Note that user's device and media APIs are external elements, therefore not part of the system boundary. Firebase/Google maintains the uptime of our application and database since we utilize of their services. We also make use of Jenkins/GitHub Workflow for CI/CD of our application. 
+	
+
 
 \section{Scope of Hazard Analysis}
 a
@@ -58,7 +76,7 @@ a
 a
 
 \section{Critical Assumptions}
-a
+There are no critical assumptions.
 
 \begin{landscape}
 \newpage
@@ -142,6 +160,7 @@ Below are the Requirements that have been formed by the above analysis.
 \end{itemize}
 
 \section{Roadmap}
-a
+The safety requirements determined within this document will be considered throughout the development of the project. After completion of key components (Frontend, Backend, Database etc.), hazard analysis will be conducted to ensure that potential risks are mitigated. If any issues or risks are discovered, action will be taken immediately to resolve them.
+
 
 \end{document}
