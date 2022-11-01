@@ -25,15 +25,17 @@
 
 \pagenumbering{roman}
 
-\section{Revision History}
-
-\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
-\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
-\midrule
-Date 1 & 1.0 & Notes\\
-Date 2 & 1.1 & Notes\\
-\bottomrule
-\end{tabularx}
+\section*{Revision History}
+\begin{table}[hp]
+	\caption{Revision History} \label{TblRevisionHistory}
+	\begin{tabularx}{\textwidth}{llX}
+		\toprule
+		\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+		\midrule
+		October 31 & Jarrod Colwell & Summary \& Objectives content added\\
+		\bottomrule
+	\end{tabularx}
+\end{table}
 
 \newpage
 
@@ -50,11 +52,15 @@ Date 2 & 1.1 & Notes\\
 \section{Symbols, Abbreviations and Acronyms}
 
 \renewcommand{\arraystretch}{1.2}
-\begin{tabular}{l l} 
+\begin{tabular}{l | l} 
   \toprule		
-  \textbf{symbol} & \textbf{description}\\
+  \textbf{Symbol} & \textbf{Description}\\
   \midrule 
   T & Test\\
+  V\&V & System Verification and Validation\\
+  SRS & Software Requirements Specification\\
+  UI & User Interface\\
+  
   \bottomrule
 \end{tabular}\\
 
@@ -71,17 +77,35 @@ This document ... \wss{provide an introductory blurb and roadmap of the
 \section{General Information}
 
 \subsection{Summary}
+This document describes the plan to verify and validate that Flick Picker meets the defined requirements and specifications. Additionally, this document will validate that Flick Picker fulfills its intended purpose of recommending compatible Movies, TV Shows, or Anime to an individual or a group.
 
-\wss{Say what software is being tested.  Give its name and a brief overview of
-  its general functions.}
+\subsubsection{Front End Testing}
+\begin{itemize}
+	\item Account Creation - Web page that facilitates user account creation
+	\item User Preferences - Web page that facilitates user preference settings
+	\item Group Creation - Web page that facilitates the creation of groups
+	\item Recommendation - Web page that displays recommendations for an individual or group
+\end{itemize}
+\subsubsection{Back End Testing}
+\begin{itemize}
+	\item Database Access - Accessing the database to find user preferences or information pertaining to Movies, TV Shows, or Anime
+	\item Recommendation Algorithm - The algorithm responsible for finding the best Movies, TV Shows, or Anime for an individual or group
+	\item API Data - The accessing, storage, and usage of external data from various APIs
+\end{itemize}
+
+% \wss{Say what software is being tested.  Give its name and a brief overview of its general functions.}
 
 \subsection{Objectives}
+\subsubsection{Requirements}
+The first objective involves verifying that Flick Picker meets requirements outlined in our SRS document and validating that the behaviour present is desirable. This includes the functional requirements (e.g. Authentication Requirements) and the non-functional requirements (e.g. Appearance Requirements). This objective will build confidence in the correctness of Flick Picker along with validating that security and usability standards are met.
 
-\wss{State what is intended to be accomplished.  The objective will be around
-  the qualities that are most important for your project.  You might have
-  something like: ``build confidence in the software correctness,''
-  ``demonstrate adequate usability.'' etc.  You won't list all of the qualities,
-  just those that are most important.}
+\subsubsection{UI Elements}
+The second objective of the V\&V document involves the validation of navigability and functionality of UI elements. Each menu described in the 'Front End Testing' section above must be functional for users. Additionally, users must be able to navigate to each page individually. This objective ensures that usability and response time standards are met. 
+
+\subsubsection{External Connections}
+The final objective of the V\&V document is to ensure that all external connections of Flick Picker (e.g. APIs, Database) work as intended. This objective ensures that the interoperability of Flick Picker is adequate. 
+
+%\wss{State what is intended to be accomplished.  The objective will be around the qualities that are most important for your project.  You might have something like: ``build confidence in the software correctness,'' ``demonstrate adequate usability.'' etc.  You won't list all of the qualities, just those that are most important.}
 
 \subsection{Relevant Documentation}
 
