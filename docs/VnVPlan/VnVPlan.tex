@@ -60,7 +60,8 @@
   V\&V & System Verification and Validation\\
   SRS & Software Requirements Specification\\
   UI & User Interface\\
-  
+  FR & Functional Requirement\\
+  NFR & Non-Functional Requirement\\
   \bottomrule
 \end{tabular}\\
 
@@ -71,8 +72,7 @@
 
 \pagenumbering{arabic}
 
-This document ... \wss{provide an introductory blurb and roadmap of the
-  Verification and Validation plan}
+This document contains the V\&{}V plan for Flick Picker, as well as the roadmap of when the tests will be implemented.
 
 \section{General Information}
 
@@ -173,56 +173,62 @@ The final objective of the V\&V document is to ensure that all external connecti
   here.}
 
 \section{System Test Description}
+The tests outlined here will follow the following format:
+\paragraph*{Test \#{}: Test Title}
+\begin{itemize}
+	\item[Control:] FR: Manual or Automated | NFR: Functional, Dynamic, Manual, or Static
+	\item[Initial State:] Initial State
+	\item[Input:] Input
+	\item[Output:] Output
+	\item[Derivation:] Test Case Derivation
+	\item[Execution:] How Test is Performed
+\end{itemize}
 	
 \subsection{Tests for Functional Requirements}
+The tests below are based directly on the FR sections from the SRS. Since these are mandatory requirements, they will all be automated, and the tests must pass on any new code change to prevent these requirements from being violated.
 
-\wss{Subsets of the tests may be in related, so this section is divided into
-  different areas.  If there are no identifiable subsets for the tests, this
-  level of document structure can be removed.}
+\subsubsection{Area of Testing: Authentication}
+Contains all the tests for the Authentication FR.
 
-\wss{Include a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good.}
+\paragraph*{UI Auth Test 1: User Log In - Success}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Empty email and password box, on the login screen. Pre-existing test customer exists. 
+	\item[Input:] Email and password is filled correctly
+	\item[Output:] Customer is logged in
+	\item[Derivation:] Need a successful UI test on what a customer will see once they are logged in correctly
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
 
-\subsubsection{Area of Testing1}
+\paragraph*{API Auth Test 1: User Log In - Success}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Pre-existing test customer exists. 
+	\item[Input:] `login' API is targeted with correct credentials filled in
+	\item[Output:] Success response is returned (200)
+	\item[Derivation:] Need a successful API test on how the login API will respond to correct information
+	\item[Execution:] API Test
+\end{itemize}
 
-\wss{It would be nice to have a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good.  If a section
-  covers tests for input constraints, you should reference the data constraints
-  table in the SRS.}
-		
-\paragraph{Title for Test}
+\paragraph*{UI Auth Test 2: User Log In - Failure}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Empty email and password box, on the login screen. Pre-existing test customer exists. 
+	\item[Input:] Email and password is filled incorrectly
+	\item[Output:] Customer failed to login
+	\item[Derivation:] Need a successful failure UI test on what a customer will see once they input their credentials incorrectly
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
 
-\begin{enumerate}
-
-\item{test-id1\\}
-
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-
-\end{enumerate}
+\paragraph*{API Auth Test 2: User Log In - Failure}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Pre-existing test customer exists. 
+	\item[Input:] `login' API is targeted with incorrect credentials filled in
+	\item[Output:] Failure response is returned (401)
+	\item[Derivation:] Need a successful API test on how the login API will respond to incorrect information
+	\item[Execution:] API Test
+\end{itemize}
 
 \subsubsection{Area of Testing2}
 
@@ -279,120 +285,121 @@ How test will be performed:
   requirements.}
 
 \section{Unit Test Description}
+This section will be filled in after the MIS is completed. 
 
-\wss{Reference your MIS and explain your overall philosophy for test case
-  selection.}  
-\wss{This section should not be filled in until after the MIS has
-  been completed.}
-
-\subsection{Unit Testing Scope}
-
-\wss{What modules are outside of the scope.  If there are modules that are
-  developed by someone else, then you would say here if you aren't planning on
-  verifying them.  There may also be modules that are part of your software, but
-  have a lower priority for verification than others.  If this is the case,
-  explain your rationale for the ranking of module importance.}
-
-\subsection{Tests for Functional Requirements}
-
-\wss{Most of the verification will be through automated unit testing.  If
-  appropriate specific modules can be verified by a non-testing based
-  technique.  That can also be documented in this section.}
-
-\subsubsection{Module 1}
-
-\wss{Include a blurb here to explain why the subsections below cover the module.
-  References to the MIS would be good.  You will want tests from a black box
-  perspective and from a white box perspective.  Explain to the reader how the
-  tests were selected.}
-
-\begin{enumerate}
-
-\item{test-id1\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-
-\item{...\\}
-    
-\end{enumerate}
-
-\subsubsection{Module 2}
-
-...
-
-\subsection{Tests for Nonfunctional Requirements}
-
-\wss{If there is a module that needs to be independently assessed for
-  performance, those test cases can go here.  In some projects, planning for
-  nonfunctional tests of units will not be that relevant.}
-
-\wss{These tests may involve collecting performance data from previously
-  mentioned functional tests.}
-
-\subsubsection{Module ?}
-		
-\begin{enumerate}
-
-\item{test-id1\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
-
-\end{enumerate}
-
-\subsubsection{Module ?}
-
-...
-
-\subsection{Traceability Between Test Cases and Modules}
-
-\wss{Provide evidence that all of the modules have been considered.}
+%\wss{Reference your MIS and explain your overall philosophy for test case
+%  selection.}  
+%\wss{This section should not be filled in until after the MIS has
+%  been completed.}
+%
+%\subsection{Unit Testing Scope}
+%
+%\wss{What modules are outside of the scope.  If there are modules that are
+%  developed by someone else, then you would say here if you aren't planning on
+%  verifying them.  There may also be modules that are part of your software, but
+%  have a lower priority for verification than others.  If this is the case,
+%  explain your rationale for the ranking of module importance.}
+%
+%\subsection{Tests for Functional Requirements}
+%
+%\wss{Most of the verification will be through automated unit testing.  If
+%  appropriate specific modules can be verified by a non-testing based
+%  technique.  That can also be documented in this section.}
+%
+%\subsubsection{Module 1}
+%
+%\wss{Include a blurb here to explain why the subsections below cover the module.
+%  References to the MIS would be good.  You will want tests from a black box
+%  perspective and from a white box perspective.  Explain to the reader how the
+%  tests were selected.}
+%
+%\begin{enumerate}
+%
+%\item{test-id1\\}
+%
+%Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
+%  be automatic}
+%					
+%Initial State: 
+%					
+%Input: 
+%					
+%Output: \wss{The expected result for the given inputs}
+%
+%Test Case Derivation: \wss{Justify the expected value given in the Output field}
+%
+%How test will be performed: 
+%					
+%\item{test-id2\\}
+%
+%Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
+%  be automatic}
+%					
+%Initial State: 
+%					
+%Input: 
+%					
+%Output: \wss{The expected result for the given inputs}
+%
+%Test Case Derivation: \wss{Justify the expected value given in the Output field}
+%
+%How test will be performed: 
+%
+%\item{...\\}
+%    
+%\end{enumerate}
+%
+%\subsubsection{Module 2}
+%
+%...
+%
+%\subsection{Tests for Nonfunctional Requirements}
+%
+%\wss{If there is a module that needs to be independently assessed for
+%  performance, those test cases can go here.  In some projects, planning for
+%  nonfunctional tests of units will not be that relevant.}
+%
+%\wss{These tests may involve collecting performance data from previously
+%  mentioned functional tests.}
+%
+%\subsubsection{Module ?}
+%		
+%\begin{enumerate}
+%
+%\item{test-id1\\}
+%
+%Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
+%  be automatic}
+%					
+%Initial State: 
+%					
+%Input/Condition: 
+%					
+%Output/Result: 
+%					
+%How test will be performed: 
+%					
+%\item{test-id2\\}
+%
+%Type: Functional, Dynamic, Manual, Static etc.
+%					
+%Initial State: 
+%					
+%Input: 
+%					
+%Output: 
+%					
+%How test will be performed: 
+%
+%\end{enumerate}
+%
+%\subsubsection{Module ?}
+%
+%...
+%
+%\subsection{Traceability Between Test Cases and Modules}
+%
+%\wss{Provide evidence that all of the modules have been considered.}
 				
 \bibliographystyle{plainnat}
 
