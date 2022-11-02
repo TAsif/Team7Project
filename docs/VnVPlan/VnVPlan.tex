@@ -60,7 +60,9 @@
   V\&V & System Verification and Validation\\
   SRS & Software Requirements Specification\\
   UI & User Interface\\
-  
+  FR & Functional Requirement\\
+  NFR & Non-Functional Requirement\\
+  OAuth & Open Authorization\\
   \bottomrule
 \end{tabular}\\
 
@@ -70,8 +72,7 @@
 
 \pagenumbering{arabic}
 
-This document ... \wss{provide an introductory blurb and roadmap of the
-  Verification and Validation plan}
+This document contains the V\&{}V plan for Flick Picker, as well as the roadmap of when the tests will be implemented.
 
 \section{General Information}
 
@@ -175,60 +176,299 @@ The final objective of the V\&V document is to ensure that all external connecti
   here.}
 
 \section{System Test Description}
+The tests outlined here will follow the following format:
+\paragraph*{Test \#{}: Test Title}
+\begin{itemize}
+	\item[Control:] FR: Manual or Automated | NFR: Functional, Dynamic, Manual, or Static
+	\item[Initial State:] Initial State
+	\item[Input:] Input
+	\item[Output:] Output
+	\item[Derivation:] Test Case Derivation
+	\item[Execution:] Automated Selenium Test | API Test
+\end{itemize}
+The execution of the test will be through automated selenium tests for the front-end and an API test library for the back-end.
 	
 \subsection{Tests for Functional Requirements}
+The tests below are based directly on the FR sections from the SRS. Since these are mandatory requirements, they will all be automated, and the tests must pass on any new code change to prevent these requirements from being violated.
 
-\wss{Subsets of the tests may be in related, so this section is divided into
-  different areas.  If there are no identifiable subsets for the tests, this
-  level of document structure can be removed.}
+\subsubsection{Area of Testing: Authentication}
+Contains all the tests for the Authentication FR.
 
-\wss{Include a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good.}
+\paragraph*{UI Auth T 1: User Login - Success}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Empty email and password box, on the login screen. Pre-existing test customer exists. 
+	\item[Input:] Email and password is filled correctly
+	\item[Output:] Customer is logged in
+	\item[Derivation:] Need a successful UI test on what a customer will see once they are logged in correctly
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
 
-\subsubsection{Area of Testing1}
+\paragraph*{API Auth T 1: User Login - Success}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Pre-existing test customer exists. 
+	\item[Input:] `login' API is targeted with correct credentials filled in
+	\item[Output:] Success response is returned (200)
+	\item[Derivation:] Need a successful API test on how the login API will respond to correct information
+	\item[Execution:] API Test
+\end{itemize}
 
-\wss{It would be nice to have a blurb here to explain why the subsections below
-  cover the requirements.  References to the SRS would be good.  If a section
-  covers tests for input constraints, you should reference the data constraints
-  table in the SRS.}
-		
-\paragraph{Title for Test}
+\paragraph*{UI Auth T 2: User Login - Failure}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Empty email and password box, on the login screen. Pre-existing test customer exists. 
+	\item[Input:] Email and password is filled incorrectly
+	\item[Output:] Customer failed to login
+	\item[Derivation:] Need a successful failure UI test on what a customer will see once they input their credentials incorrectly
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
 
-\begin{enumerate}
+\paragraph*{API Auth T 2: User Login - Failure}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Pre-existing test customer exists. 
+	\item[Input:] `login' API is targeted with incorrect credentials filled in
+	\item[Output:] Failure response is returned (401)
+	\item[Derivation:] Need a successful API test on how the login API will respond to incorrect information
+	\item[Execution:] API Test
+\end{itemize}
 
-\item{test-id1\\}
+\paragraph*{UI Auth T 3: User Sign-Up - Success}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Empty email and password box, on the login screen.
+	\item[Input:] Sign-up button is pressed, all boxes for sign-up are filled in correctly, confirm button is pressed
+	\item[Output:] Customer account is created
+	\item[Derivation:] Need a successful UI test on what a customer will see once they Sign-Up correctly
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
 
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
+\paragraph*{API Auth T 3: User Sign-Up - Success}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `signup' API is targeted with information correctly filled in
+	\item[Output:] Success response is returned (200) and customer account is created
+	\item[Derivation:] Need a successful API test on how the signup API will respond to correct information
+	\item[Execution:] API Test
+\end{itemize}
 
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-					
-How test will be performed: 
-					
-\item{test-id2\\}
+\paragraph*{UI Auth T 4: User Sign-Up - Failure}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Empty email and password box, on the login screen.
+	\item[Input:] Sign-up button is pressed, all boxes for sign-up are filled in incorrectly, confirm button is pressed
+	\item[Output:] Areas where there is incorrect information is highlighted
+	\item[Derivation:] Need a successful UI test on what a customer will see if they do not Sign-Up correctly
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
 
-Control: Manual versus Automatic
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
+\paragraph*{API Auth T 4: User Sign-Up - Failure}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `signup' API is targeted with information incorrectly filled in
+	\item[Output:] Failure response is returned (422) and customer account is not created
+	\item[Derivation:] Need a successful API test on how the signup API will respond to correct information
+	\item[Execution:] API Test
+\end{itemize}
 
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
+\paragraph*{UI Auth T 5: User Logout}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Test customer is logged in, on home page
+	\item[Input:] Logout is pressed
+	\item[Output:] Login screen displays
+	\item[Derivation:] Need a UI test on what a customer will see if they log out
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
 
-How test will be performed: 
+\paragraph*{API Auth T 5: User Logout}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Test customer is logged in
+	\item[Input:] `logout' API is targeted with the test customer information
+	\item[Output:] Success response is returned (500)
+	\item[Derivation:] Need to test the logout API
+	\item[Execution:] API Test
+\end{itemize}
 
-\end{enumerate}
+\paragraph*{UI Auth T 6: User OAuth Sign-Up/Login}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Empty email and password box, on the login screen.
+	\item[Input:] OAuth button is pressed
+	\item[Output:] Correctly redirect to OAuth login
+	\item[Derivation:] Need a successful UI test on what a customer will see if they choose to sign-up/login though an OAuth provider
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
 
-\subsubsection{Area of Testing2}
+\subsubsection{Area of Testing: Profile/Group}
+Contains all the tests for the Profile/Group FRs.
 
-...
+\paragraph*{UI PG T 1: Modify User Profile}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Profile button is clicked, display name and password are updated, confirm is clicked
+	\item[Output:] Confirmation that information is updated
+	\item[Derivation:] Need a successful UI test on how a customer can update their profile
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API PG T 1: Modify User Profile}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `updateProfile' API is targeted with data to update
+	\item[Output:] Success status is returned (200)
+	\item[Derivation:] Need a successful API test on how a customer can update their profile
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{UI PG T 2: Modify User Preferences}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Profile button is clicked, show preferences are updated, confirm is clicked
+	\item[Output:] Confirmation that preferences are updated
+	\item[Derivation:] Need a successful UI test on how a customer can update their preferences
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API PG T 2: Modify User Preferences}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `updatePreferences' API is targeted with data to update
+	\item[Output:] Success status is returned (200)
+	\item[Derivation:] Need a successful API test on how a customer can update their preferences
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{UI PG T 3: Create Group}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Create Group button is clicked, name is input, confirm is clicked
+	\item[Output:] Group is created with the specified name
+	\item[Derivation:] Need a successful UI test on how a customer can create a group
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API PG T 3: Create Group}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `createGroup' API is targeted with name specified
+	\item[Output:] Success status is returned (200) and group is created
+	\item[Derivation:] Need a successful API test on how a customer can create a group
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{UI PG T 4: Join Group}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Invite is accepted through notifications
+	\item[Output:] User is added to the group
+	\item[Derivation:] Need a successful UI test on how a customer can join a group
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API PG T 4: Join Group}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `acceptInvite' API is targeted
+	\item[Output:] Success response is returned (200)
+	\item[Derivation:] Need a successful API test on how a customer can join a group
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{UI PG T 5: Invite to Group}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Group is selected, invite user through their username or email, confirm is clicked
+	\item[Output:] User invite is sent
+	\item[Derivation:] Need a successful UI test on how a customer can send an invite
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API PG T 5: Invite to Group}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `sendInvite' API is targeted
+	\item[Output:] Success response is returned (200)
+	\item[Derivation:] Need a successful API test on how a customer can send an invite
+	\item[Execution:] API Test
+\end{itemize}
+
+\subsubsection{Area of Testing: Recommendation}
+Contains all the tests for the Recommendation FRs.
+
+\paragraph*{UI R T 1: Receive Recommendations}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Not Applicable
+	\item[Output:] Observe if the home page is updated with recommendations
+	\item[Derivation:] Need a successful UI test where a customer gets rotating recommendations
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API R T 1: Receive Recommendations}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `viewRecommendations' API is targeted
+	\item[Output:] Success response is returned (200) along with the list of shows
+	\item[Derivation:] Need a successful API test where a customer gets rotating recommendations
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{UI R T 2: Rate Recommendations}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Hover a movie and input recommendation
+	\item[Output:] Movie should be updated with the recommendation
+	\item[Derivation:] Need a successful UI test where a customer can update recommendations
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API R T 2: Rate Recommendations}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `rateRecommendations' API is targeted along with enum data type
+	\item[Output:] Success response is returned (200) and the movie recommendation is stored
+	\item[Derivation:] Need a successful API test where a customer gets updated recommendations
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{API R T 3: Recommendation Match}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `findSharedRecommendation' API is targeted along with 5 user preferences
+	\item[Output:] Success response is returned (200) and a show is selected with shared preferences
+	\item[Derivation:] Need a successful API test where a group gets a recommended show
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{API R T 4: Recommendation Mismatch}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `findSharedRecommendation' API is targeted along with 5 user preferences, with entirely different preferences
+	\item[Output:] Success response is returned (200) and a show is selected with shared the highest number of shared preferences
+	\item[Derivation:] Need a successful API test where a group gets a recommended show where none of their preferences matched
+	\item[Execution:] API Test
+\end{itemize}
 
 \subsection{Tests for Nonfunctional Requirements}
 
@@ -281,120 +521,121 @@ How test will be performed:
   requirements.}
 
 \section{Unit Test Description}
+This section will be filled in after the MIS is completed. 
 
-\wss{Reference your MIS and explain your overall philosophy for test case
-  selection.}  
-\wss{This section should not be filled in until after the MIS has
-  been completed.}
-
-\subsection{Unit Testing Scope}
-
-\wss{What modules are outside of the scope.  If there are modules that are
-  developed by someone else, then you would say here if you aren't planning on
-  verifying them.  There may also be modules that are part of your software, but
-  have a lower priority for verification than others.  If this is the case,
-  explain your rationale for the ranking of module importance.}
-
-\subsection{Tests for Functional Requirements}
-
-\wss{Most of the verification will be through automated unit testing.  If
-  appropriate specific modules can be verified by a non-testing based
-  technique.  That can also be documented in this section.}
-
-\subsubsection{Module 1}
-
-\wss{Include a blurb here to explain why the subsections below cover the module.
-  References to the MIS would be good.  You will want tests from a black box
-  perspective and from a white box perspective.  Explain to the reader how the
-  tests were selected.}
-
-\begin{enumerate}
-
-\item{test-id1\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input: 
-					
-Output: \wss{The expected result for the given inputs}
-
-Test Case Derivation: \wss{Justify the expected value given in the Output field}
-
-How test will be performed: 
-
-\item{...\\}
-    
-\end{enumerate}
-
-\subsubsection{Module 2}
-
-...
-
-\subsection{Tests for Nonfunctional Requirements}
-
-\wss{If there is a module that needs to be independently assessed for
-  performance, those test cases can go here.  In some projects, planning for
-  nonfunctional tests of units will not be that relevant.}
-
-\wss{These tests may involve collecting performance data from previously
-  mentioned functional tests.}
-
-\subsubsection{Module ?}
-		
-\begin{enumerate}
-
-\item{test-id1\\}
-
-Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
-  be automatic}
-					
-Initial State: 
-					
-Input/Condition: 
-					
-Output/Result: 
-					
-How test will be performed: 
-					
-\item{test-id2\\}
-
-Type: Functional, Dynamic, Manual, Static etc.
-					
-Initial State: 
-					
-Input: 
-					
-Output: 
-					
-How test will be performed: 
-
-\end{enumerate}
-
-\subsubsection{Module ?}
-
-...
-
-\subsection{Traceability Between Test Cases and Modules}
-
-\wss{Provide evidence that all of the modules have been considered.}
+%\wss{Reference your MIS and explain your overall philosophy for test case
+%  selection.}  
+%\wss{This section should not be filled in until after the MIS has
+%  been completed.}
+%
+%\subsection{Unit Testing Scope}
+%
+%\wss{What modules are outside of the scope.  If there are modules that are
+%  developed by someone else, then you would say here if you aren't planning on
+%  verifying them.  There may also be modules that are part of your software, but
+%  have a lower priority for verification than others.  If this is the case,
+%  explain your rationale for the ranking of module importance.}
+%
+%\subsection{Tests for Functional Requirements}
+%
+%\wss{Most of the verification will be through automated unit testing.  If
+%  appropriate specific modules can be verified by a non-testing based
+%  technique.  That can also be documented in this section.}
+%
+%\subsubsection{Module 1}
+%
+%\wss{Include a blurb here to explain why the subsections below cover the module.
+%  References to the MIS would be good.  You will want tests from a black box
+%  perspective and from a white box perspective.  Explain to the reader how the
+%  tests were selected.}
+%
+%\begin{enumerate}
+%
+%\item{test-id1\\}
+%
+%Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
+%  be automatic}
+%					
+%Initial State: 
+%					
+%Input: 
+%					
+%Output: \wss{The expected result for the given inputs}
+%
+%Test Case Derivation: \wss{Justify the expected value given in the Output field}
+%
+%How test will be performed: 
+%					
+%\item{test-id2\\}
+%
+%Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
+%  be automatic}
+%					
+%Initial State: 
+%					
+%Input: 
+%					
+%Output: \wss{The expected result for the given inputs}
+%
+%Test Case Derivation: \wss{Justify the expected value given in the Output field}
+%
+%How test will be performed: 
+%
+%\item{...\\}
+%    
+%\end{enumerate}
+%
+%\subsubsection{Module 2}
+%
+%...
+%
+%\subsection{Tests for Nonfunctional Requirements}
+%
+%\wss{If there is a module that needs to be independently assessed for
+%  performance, those test cases can go here.  In some projects, planning for
+%  nonfunctional tests of units will not be that relevant.}
+%
+%\wss{These tests may involve collecting performance data from previously
+%  mentioned functional tests.}
+%
+%\subsubsection{Module ?}
+%		
+%\begin{enumerate}
+%
+%\item{test-id1\\}
+%
+%Type: \wss{Functional, Dynamic, Manual, Automatic, Static etc. Most will
+%  be automatic}
+%					
+%Initial State: 
+%					
+%Input/Condition: 
+%					
+%Output/Result: 
+%					
+%How test will be performed: 
+%					
+%\item{test-id2\\}
+%
+%Type: Functional, Dynamic, Manual, Static etc.
+%					
+%Initial State: 
+%					
+%Input: 
+%					
+%Output: 
+%					
+%How test will be performed: 
+%
+%\end{enumerate}
+%
+%\subsubsection{Module ?}
+%
+%...
+%
+%\subsection{Traceability Between Test Cases and Modules}
+%
+%\wss{Provide evidence that all of the modules have been considered.}
 				
 \bibliographystyle{plainnat}
 
