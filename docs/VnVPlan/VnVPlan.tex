@@ -33,10 +33,13 @@
 		\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
 		\midrule
 		October 31 & Jarrod Colwell & Summary \& Objectives content added\\
+		\midrule
+		November 1 & Ali Tabar & Added and formatted tests for Non-Functional Requirements\\
+		\midrule
+		November 1 & Ali Tabar & Filled in some tests for Non-Functional Requirements (Look and Feel T 1: Appearance, all of Performance)\\
 		\bottomrule
 	\end{tabularx}
 \end{table}
-
 \newpage
 
 \tableofcontents
@@ -238,6 +241,7 @@ How test will be performed:
   survey.}
 
 The tests below are based directly on the NFR sections from the SRS. Not all tests will be automated due to the nature of the requirement being tested.
+We have also deemed to not test Scalability, due to the nature of that requirement.
 
 \subsubsection{Area of Testing: Look and Feel}
 
@@ -245,12 +249,12 @@ Contains all the tests for the Look and Feel NFR.
 
 \paragraph*{Look and Feel T 1: Appearance}
 \begin{itemize}
-	\item[Control:] Functional, Dynamic, Manual, or Static
-	\item[Initial State:] Initial State
-	\item[Input:] Input
-	\item[Output:] Output
-	\item[Derivation:] Test Case Derivation
-	\item[Execution:] Automated Selenium Test | API Test
+	\item[Control:] Manual
+	\item[Initial State:] Empty email and password box on the login screen
+	\item[Input:] Any and all appropriate user inputs and navigation (typing login info, clicking buttons)
+	\item[Output:] Visiting all menus and triggering all possible UI changes
+	\item[Derivation:] Program's visual look in the real world (proper buttons / menus appearing, alignment, etc) should be approved by a real user
+	\item[Execution:] Manual User Test
 \end{itemize}
 
 \paragraph*{Look and Feel T 2: Style}
@@ -291,76 +295,66 @@ Contains all the tests for the Usability and Humanity NFR.
 
 Contains all the tests for the Performance NFR.
 
-\paragraph*{Performance T 1: Speed and Latency}
+\paragraph*{Performance T 1: User Input Responsiveness}
 \begin{itemize}
-	\item[Control:] Functional, Dynamic, Manual, or Static
-	\item[Initial State:] Initial State
-	\item[Input:] Input
-	\item[Output:] Output
-	\item[Derivation:] Test Case Derivation
-	\item[Execution:] Automated Selenium Test | API Test
+	\item[Control:] Dynamic
+	\item[Initial State:] Any menu
+	\item[Input:] Any user input (entering text, clicking a button)
+	\item[Output:] Appropriate program response to user input
+	\item[Derivation:] Must time the responsiveness of the program to an arbitrary user action in order to gauge if it is below 1 second.
+	\item[Execution:] Automated Selenium Test
 \end{itemize}
 
 \paragraph*{Performance T 2: Safety-Critical}
 \begin{itemize}
-	\item[Control:] Functional, Dynamic, Manual, or Static
-	\item[Initial State:] Initial State
-	\item[Input:] Input
-	\item[Output:] Output
-	\item[Derivation:] Test Case Derivation
-	\item[Execution:] Automated Selenium Test | API Test
+	\item[Control:] Dynamic
+	\item[Initial State:] Empty email and password box on the login screen
+	\item[Input:] Any and all appropriate user inputs and navigation (typing login info, clicking buttons)
+	\item[Output:] Visiting all menus and triggering all possible UI changes, verifying with Selenium that no user information is outputted on the page
+	\item[Derivation:] Ensuring that the application handles the user's private data properly and does not output it due to any unforeseen condition
+	\item[Execution:] Automated Selenium Test
 \end{itemize}
 
 \paragraph*{Performance T 3: Precision or Accuracy}
 \begin{itemize}
-	\item[Control:] Functional, Dynamic, Manual, or Static
-	\item[Initial State:] Initial State
-	\item[Input:] Input
-	\item[Output:] Output
-	\item[Derivation:] Test Case Derivation
-	\item[Execution:] Automated Selenium Test | API Test
+	\item[Control:] Manual
+	\item[Initial State:] Main screen to generate a recommended media match for a previously created and inputted group
+	\item[Input:] Clicking the button to generate the match
+	\item[Output:] The media match
+	\item[Derivation:] Must assess accuracy of program's ability to find something that everyone in the group should enjoy
+	\item[Execution:] Conduct a survey using a fixed amount of people, and have each of them create an account. An effort should be made to choose a group of respondents that have a wide variety of preferences for the different categories of media available on Flick Picker. They will create and join multiple groups among each other using the application, and search for matches in each of these distinct groups. The survey will inquire respondents about each group, and how accurate they perceive their matches were each given group.
 \end{itemize}
 
 \paragraph*{Performance T 4: Reliability and Availability}
 \begin{itemize}
-	\item[Control:] Functional, Dynamic, Manual, or Static
-	\item[Initial State:] Initial State
-	\item[Input:] Input
-	\item[Output:] Output
-	\item[Derivation:] Test Case Derivation
-	\item[Execution:] Automated Selenium Test | API Test
+	\item[Control:] Dynamic
+	\item[Initial State:] Online application with server running
+	\item[Input:] Visiting the web page
+	\item[Output:] Connection success or failure
+	\item[Derivation:] Checking to see if the web application is available for at least 90\% of the day, assuming Firebase stability
+	\item[Execution:] Automated Selenium Test
 \end{itemize}
 
 
 \paragraph*{Performance T 5: Robustness or Fault-Tolerance}
 \begin{itemize}
-	\item[Control:] Functional, Dynamic, Manual, or Static
-	\item[Initial State:] Initial State
+	\item[Control:] Dynamic
+	\item[Initial State:] Main screen to generate a recommended media match for a previously created and inputted group. This group will be comprised of unique and few preferences.
 	\item[Input:] Input
 	\item[Output:] Output
-	\item[Derivation:] Test Case Derivation
-	\item[Execution:] Automated Selenium Test | API Test
+	\item[Derivation:] Verifying that a match will always be found by stress testing using some heterogeneous groups
+	\item[Execution:] Automated Selenium Test
 \end{itemize}
 
 \paragraph*{Performance T 6: Capacity}
 \begin{itemize}
-	\item[Control:] Functional, Dynamic, Manual, or Static
-	\item[Initial State:] Initial State
-	\item[Input:] Input
-	\item[Output:] Output
-	\item[Derivation:] Test Case Derivation
-	\item[Execution:] Automated Selenium Test | API Test
-\end{itemize}
-
-
-\paragraph*{Performance T 7: Scalability or Extensibility???}
-\begin{itemize}
-	\item[Control:] Functional, Dynamic, Manual, or Static
-	\item[Initial State:] Initial State
-	\item[Input:] Input
-	\item[Output:] Output
-	\item[Derivation:] Test Case Derivation
-	\item[Execution:] Automated Selenium Test | API Test
+	\item[Control:] Dynamic
+	\item[Initial State:] 0 users logged on the application
+	\item[Input:] Several users logging onto the application
+	\item[Output:] Application's stability
+	\item[Derivation:] Ensuring and proving that each user session is independent of another and that no
+	limit to the number of users logged on concurrently exists.
+	\item[Execution:] Automated Selenium Test
 \end{itemize}
 
 \subsubsection{Area of Testing: Operational and Environmental}
