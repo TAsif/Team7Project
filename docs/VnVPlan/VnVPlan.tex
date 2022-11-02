@@ -62,6 +62,7 @@
   UI & User Interface\\
   FR & Functional Requirement\\
   NFR & Non-Functional Requirement\\
+  OAuth & Open Authorization\\
   \bottomrule
 \end{tabular}\\
 
@@ -181,8 +182,9 @@ The tests outlined here will follow the following format:
 	\item[Input:] Input
 	\item[Output:] Output
 	\item[Derivation:] Test Case Derivation
-	\item[Execution:] How Test is Performed
+	\item[Execution:] Automated Selenium Test | API Test
 \end{itemize}
+The execution of the test will be through automated selenium tests for the front-end and an API test library for the back-end.
 	
 \subsection{Tests for Functional Requirements}
 The tests below are based directly on the FR sections from the SRS. Since these are mandatory requirements, they will all be automated, and the tests must pass on any new code change to prevent these requirements from being violated.
@@ -190,7 +192,7 @@ The tests below are based directly on the FR sections from the SRS. Since these 
 \subsubsection{Area of Testing: Authentication}
 Contains all the tests for the Authentication FR.
 
-\paragraph*{UI Auth Test 1: User Log In - Success}
+\paragraph*{UI Auth T 1: User Login - Success}
 \begin{itemize}
 	\item[Control:] Automated
 	\item[Initial State:] Empty email and password box, on the login screen. Pre-existing test customer exists. 
@@ -200,7 +202,7 @@ Contains all the tests for the Authentication FR.
 	\item[Execution:] Selenium Automated Test
 \end{itemize}
 
-\paragraph*{API Auth Test 1: User Log In - Success}
+\paragraph*{API Auth T 1: User Login - Success}
 \begin{itemize}
 	\item[Control:] Automated
 	\item[Initial State:] Pre-existing test customer exists. 
@@ -210,7 +212,7 @@ Contains all the tests for the Authentication FR.
 	\item[Execution:] API Test
 \end{itemize}
 
-\paragraph*{UI Auth Test 2: User Log In - Failure}
+\paragraph*{UI Auth T 2: User Login - Failure}
 \begin{itemize}
 	\item[Control:] Automated
 	\item[Initial State:] Empty email and password box, on the login screen. Pre-existing test customer exists. 
@@ -220,7 +222,7 @@ Contains all the tests for the Authentication FR.
 	\item[Execution:] Selenium Automated Test
 \end{itemize}
 
-\paragraph*{API Auth Test 2: User Log In - Failure}
+\paragraph*{API Auth T 2: User Login - Failure}
 \begin{itemize}
 	\item[Control:] Automated
 	\item[Initial State:] Pre-existing test customer exists. 
@@ -230,9 +232,241 @@ Contains all the tests for the Authentication FR.
 	\item[Execution:] API Test
 \end{itemize}
 
-\subsubsection{Area of Testing2}
+\paragraph*{UI Auth T 3: User Sign-Up - Success}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Empty email and password box, on the login screen.
+	\item[Input:] Sign-up button is pressed, all boxes for sign-up are filled in correctly, confirm button is pressed
+	\item[Output:] Customer account is created
+	\item[Derivation:] Need a successful UI test on what a customer will see once they Sign-Up correctly
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
 
-...
+\paragraph*{API Auth T 3: User Sign-Up - Success}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `signup' API is targeted with information correctly filled in
+	\item[Output:] Success response is returned (200) and customer account is created
+	\item[Derivation:] Need a successful API test on how the signup API will respond to correct information
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{UI Auth T 4: User Sign-Up - Failure}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Empty email and password box, on the login screen.
+	\item[Input:] Sign-up button is pressed, all boxes for sign-up are filled in incorrectly, confirm button is pressed
+	\item[Output:] Areas where there is incorrect information is highlighted
+	\item[Derivation:] Need a successful UI test on what a customer will see if they do not Sign-Up correctly
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API Auth T 4: User Sign-Up - Failure}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `signup' API is targeted with information incorrectly filled in
+	\item[Output:] Failure response is returned (422) and customer account is not created
+	\item[Derivation:] Need a successful API test on how the signup API will respond to correct information
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{UI Auth T 5: User Logout}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Test customer is logged in, on home page
+	\item[Input:] Logout is pressed
+	\item[Output:] Login screen displays
+	\item[Derivation:] Need a UI test on what a customer will see if they log out
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API Auth T 5: User Logout}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Test customer is logged in
+	\item[Input:] `logout' API is targeted with the test customer information
+	\item[Output:] Success response is returned (500)
+	\item[Derivation:] Need to test the logout API
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{UI Auth T 6: User OAuth Sign-Up/Login}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Empty email and password box, on the login screen.
+	\item[Input:] OAuth button is pressed
+	\item[Output:] Correctly redirect to OAuth login
+	\item[Derivation:] Need a successful UI test on what a customer will see if they choose to sign-up/login though an OAuth provider
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\subsubsection{Area of Testing: Profile/Group}
+Contains all the tests for the Profile/Group FRs.
+
+\paragraph*{UI PG T 1: Modify User Profile}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Profile button is clicked, display name and password are updated, confirm is clicked
+	\item[Output:] Confirmation that information is updated
+	\item[Derivation:] Need a successful UI test on how a customer can update their profile
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API PG T 1: Modify User Profile}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `updateProfile' API is targeted with data to update
+	\item[Output:] Success status is returned (200)
+	\item[Derivation:] Need a successful API test on how a customer can update their profile
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{UI PG T 2: Modify User Preferences}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Profile button is clicked, show preferences are updated, confirm is clicked
+	\item[Output:] Confirmation that preferences are updated
+	\item[Derivation:] Need a successful UI test on how a customer can update their preferences
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API PG T 2: Modify User Preferences}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `updatePreferences' API is targeted with data to update
+	\item[Output:] Success status is returned (200)
+	\item[Derivation:] Need a successful API test on how a customer can update their preferences
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{UI PG T 3: Create Group}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Create Group button is clicked, name is input, confirm is clicked
+	\item[Output:] Group is created with the specified name
+	\item[Derivation:] Need a successful UI test on how a customer can create a group
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API PG T 3: Create Group}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `createGroup' API is targeted with name specified
+	\item[Output:] Success status is returned (200) and group is created
+	\item[Derivation:] Need a successful API test on how a customer can create a group
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{UI PG T 4: Join Group}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Invite is accepted through notifications
+	\item[Output:] User is added to the group
+	\item[Derivation:] Need a successful UI test on how a customer can join a group
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API PG T 4: Join Group}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `acceptInvite' API is targeted
+	\item[Output:] Success response is returned (200)
+	\item[Derivation:] Need a successful API test on how a customer can join a group
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{UI PG T 5: Invite to Group}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Group is selected, invite user through their username or email, confirm is clicked
+	\item[Output:] User invite is sent
+	\item[Derivation:] Need a successful UI test on how a customer can send an invite
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API PG T 5: Invite to Group}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `sendInvite' API is targeted
+	\item[Output:] Success response is returned (200)
+	\item[Derivation:] Need a successful API test on how a customer can send an invite
+	\item[Execution:] API Test
+\end{itemize}
+
+\subsubsection{Area of Testing: Recommendation}
+Contains all the tests for the Recommendation FRs.
+
+\paragraph*{UI R T 1: Receive Recommendations}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Not Applicable
+	\item[Output:] Observe if the home page is updated with recommendations
+	\item[Derivation:] Need a successful UI test where a customer gets rotating recommendations
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API R T 1: Receive Recommendations}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `viewRecommendations' API is targeted
+	\item[Output:] Success response is returned (200) along with the list of shows
+	\item[Derivation:] Need a successful API test where a customer gets rotating recommendations
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{UI R T 2: Rate Recommendations}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] On home page
+	\item[Input:] Hover a movie and input recommendation
+	\item[Output:] Movie should be updated with the recommendation
+	\item[Derivation:] Need a successful UI test where a customer can update recommendations
+	\item[Execution:] Selenium Automated Test
+\end{itemize}
+
+\paragraph*{API R T 2: Rate Recommendations}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `rateRecommendations' API is targeted along with enum data type
+	\item[Output:] Success response is returned (200) and the movie recommendation is stored
+	\item[Derivation:] Need a successful API test where a customer gets updated recommendations
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{API R T 3: Recommendation Match}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `findSharedRecommendation' API is targeted along with 5 user preferences
+	\item[Output:] Success response is returned (200) and a show is selected with shared preferences
+	\item[Derivation:] Need a successful API test where a group gets a recommended show
+	\item[Execution:] API Test
+\end{itemize}
+
+\paragraph*{API R T 4: Recommendation Mismatch}
+\begin{itemize}
+	\item[Control:] Automated
+	\item[Initial State:] Not Applicable
+	\item[Input:] `findSharedRecommendation' API is targeted along with 5 user preferences, with entirely different preferences
+	\item[Output:] Success response is returned (200) and a show is selected with shared the highest number of shared preferences
+	\item[Derivation:] Need a successful API test where a group gets a recommended show where none of their preferences matched
+	\item[Execution:] API Test
+\end{itemize}
 
 \subsection{Tests for Nonfunctional Requirements}
 
