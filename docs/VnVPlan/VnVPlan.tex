@@ -591,67 +591,90 @@ Contains all the tests for the Performance NFR.
 	\item[Execution:] Automated Selenium Test
 \end{itemize}
 
-\subsubsection{Area of Testing: Operational and Environmental}
+\subsubsection{Area of Testing: Look and Feel Tests}
 
-Contains all the tests for the Operational and Environmental NFR.
-
-\paragraph*{Operational and Environmental T 1: Interfacing with Adjacent Systems}
+\paragraph*{Test \#2: Ease of Use Test}
 \begin{itemize}
-	\item[Control:] Functional, Dynamic, Manual, or Static
-	\item[Initial State:] Initial State
-	\item[Input:] Input
-	\item[Output:] Output
-	\item[Derivation:] Test Case Derivation
-	\item[Execution:] Automated Selenium Test | API Test
+	\item[Control:] Non-Functional
+	\item[Initial State:] System is in the login screen state
+	\item[Input:] User logs in and explores the different screens and services offered
+	\item[Output:] User goes through the system and provide feedback on the style choices (such as size of buttons or overall colour palette)
+	\item[Derivation:] The test is meant to assess how different users may feel about style decisions and offer feedback on what looks and feels good to them and what needs improvement
+	\item[Execution:] Survey
 \end{itemize}
 
-\subsubsection{Area of Testing: Maintainability and Support}
+\subsubsection{Area of Testing: Usability and Humanity Tests}
 
-Contains all the tests for the Operational and Environmental NFR.
-
-\paragraph*{Maintainability and Support T 1: Adaptability}
+\paragraph*{Test \#3: Ease of Use Test}
 \begin{itemize}
-	\item[Control:] Functional, Dynamic, Manual, or Static
-	\item[Initial State:] Initial State
-	\item[Input:] Input
-	\item[Output:] Output
-	\item[Derivation:] Test Case Derivation
-	\item[Execution:] Automated Selenium Test | API Test
+	\item[Control:] Non-Functional
+	\item[Initial State:] System is in the login screen state
+	\item[Input:] User logs in and explores the different screens and services offered
+	\item[Output:] User goes through the system without needing to ask for assistence or misunderstanding the affordances of the different screens
+	\item[Derivation:] The test case is meant to assess whether the presentation of the system informs users of different technological skill levels of what functionality is provided by whatever state/screen they may be on
+	\item[Execution:] User Test
 \end{itemize}
 
-\subsubsection{Area of Testing: Security}
-
-Contains all the tests for the Operational and Environmental NFR.
-
-\paragraph*{Security T 1: Access}
+\paragraph*{Test \#4: Learning Test}
 \begin{itemize}
-	\item[Control:] Functional, Dynamic, Manual, or Static
-	\item[Initial State:] Initial State
-	\item[Input:] Input
-	\item[Output:] Output
-	\item[Derivation:] Test Case Derivation
-	\item[Execution:] Automated Selenium Test | API Test
+	\item[Control:] Non-Functional
+	\item[Initial State:] Users have just finished Test \#3
+	\item[Input:] Users are given a survey of how easy/complicated their experience using the system was
+	\item[Output:] The surveys are filled out and collected
+	\item[Derivation:] This survey is a continuation of Test \#3, with its results providing feedback as to whether the GUI of the system is understandable to users of different skill levels
+	\item[Execution:] Survey
 \end{itemize}
 
-\paragraph*{Security T 2: Integrity}
+\subsubsection{Area of Testing: Operational and Environmental Test}
+
+\paragraph*{Test \#12: Test for Interfacing with Adjacent Systems}
 \begin{itemize}
-	\item[Control:] Functional, Dynamic, Manual, or Static
-	\item[Initial State:] Initial State
-	\item[Input:] Input
-	\item[Output:] Output
-	\item[Derivation:] Test Case Derivation
-	\item[Execution:] Automated Selenium Test | API Test
+	\item[Control:] Manual
+	\item[Initial State:] System is in the login menu state
+	\item[Input:] Developer will use the system as a regular user would on different web browsers
+	\item[Output:] The system will have the same fundamental functionalities on all browsers, with perhaps minor differences in visual presentation
+	\item[Derivation:] Developer will go through the various functionalities of the system on different web browsers, such as Chrome and Firefox, to assess whether or not it works and is usable on each
+	\item[Execution:] Developer Exploration Test
 \end{itemize}
 
-\paragraph*{Security T 3: Privacy}
+\subsubsection{Area of Testing: Maintainability and Support Tests}
+
+\paragraph*{Test \#13: Test for Adaptability}
 \begin{itemize}
-	\item[Control:] Functional, Dynamic, Manual, or Static
-	\item[Initial State:] Initial State
-	\item[Input:] Input
-	\item[Output:] Output
-	\item[Derivation:] Test Case Derivation
-	\item[Execution:] Automated Selenium Test | API Test
+	\item[Control:] Manual
+	\item[Initial State:] System is in the login menu state
+	\item[Input:] Developer will use the system as a regular user would on different mobile devices
+	\item[Output:] The system will have the same fundamental functionalities on different mobile devices, with perhaps minor differences in visual presentation
+	\item[Derivation:] Developer will go through the various functionalities of the system to assess whether or not it works and is usable on each
+	\item[Execution:] Developer Exploration Test
 \end{itemize}
+
+\subsubsection{Area of Testing: Security Tests}
+
+\paragraph*{Test \#14: Test for Access}
+\begin{itemize}
+	\item[Control:] Manual
+	\item[Initial State:] System is in the main menu state
+	\item[Input:] Developer will click on their user profile and test the ability to change settings, as well as view the profile information of other users and ensure they cannot change their settings
+	\item[Output:] The Developer's user profile will be changed, with such changes being visible to other users (if the setting was one which can be viewed by others) with the content of other profiles being unchangeable
+	\item[Derivation:] Developer will ensure that the user's data is changable, that changes to public information can be viewed by others, that others' settings cannot be changed, and private information cannot be viewed by other users
+	\item[Execution:] Developer Exploration Test
+\end{itemize}
+
+\paragraph*{Test \#15: Test for Integrity}
+
+\begin{itemize}
+	\item[Control:] Manual
+	\item[Initial State:] System is in the main menu state
+	\item[Input:] Developer will change a profile or preference setting
+	\item[Output:] After different increments of time after the changes are made (such as immediately, 1 hour, and 24 hours after) the Developer will verify that all the changes made persist and do not revert to a prior state
+	\item[Derivation:] This is the best way to verify that information persists and retains its integrity over time, with it being possible to infer future persistence of information after the testing period
+	\item[Execution:] Developer Exploration Test
+\end{itemize}
+
+\paragraph*{Test \#16: Test for Privacy}
+
+There is no possible test for this requirement, as it pertains to a regulation on how users' information may be used by those with access to it.
 
 \subsection{Traceability Between Test Cases and Requirements}
 
@@ -774,116 +797,7 @@ This section will be filled in after the MIS is completed.
 %\subsection{Traceability Between Test Cases and Modules}
 %
 %\wss{Provide evidence that all of the modules have been considered.}
-\item{...\\}
 
-\end{enumerate}
-
-\subsubsection{Module 2}
-
-...
-
-\subsection{Tests for Nonfunctional Requirements}
-
-\wss{If there is a module that needs to be independently assessed for
-  performance, those test cases can go here.  In some projects, planning for
-  nonfunctional tests of units will not be that relevant.}
-
-\wss{These tests may involve collecting performance data from previously
-  mentioned functional tests.}
-
-\subsubsection{Look and Feel Tests}
-
-\paragraph*{Test \#2: Ease of Use Test}
-\begin{itemize}
-  \item[Control:] Non-Functional
-  \item[Initial State:] System is in the login screen state
-  \item[Input:] User logs in and explores the different screens and services offered
-  \item[Output:] User goes through the system and provide feedback on the style choices (such as size of buttons or overall colour palette)
-  \item[Derivation:] The test is meant to assess how different users may feel about style decisions and offer feedback on what looks and feels good to them and what needs improvement
-  \item[Execution:] Survey
-\end{itemize}
-
-\subsubsection{Usability and Humanity Tests}
-
-\paragraph*{Test \#3: Ease of Use Test}
-\begin{itemize}
-	\item[Control:] Non-Functional
-	\item[Initial State:] System is in the login screen state
-	\item[Input:] User logs in and explores the different screens and services offered
-	\item[Output:] User goes through the system without needing to ask for assistence or misunderstanding the affordances of the different screens
-	\item[Derivation:] The test case is meant to assess whether the presentation of the system informs users of different technological skill levels of what functionality is provided by whatever state/screen they may be on
-	\item[Execution:] User Test
-\end{itemize}
-
-\paragraph*{Test \#4: Learning Test}
-\begin{itemize}
-	\item[Control:] Non-Functional
-	\item[Initial State:] Users have just finished Test \#3
-	\item[Input:] Users are given a survey of how easy/complicated their experience using the system was
-	\item[Output:] The surveys are filled out and collected
-	\item[Derivation:] This survey is a continuation of Test \#3, with its results providing feedback as to whether the GUI of the system is understandable to users of different skill levels
-	\item[Execution:] Survey
-\end{itemize}
-
-\subsubsection{Operational and Environmental Test}
-
-\paragraph*{Test \#12: Test for Interfacing with Adjacent Systems}
-\begin{itemize}
-	\item[Control:] Manual
-	\item[Initial State:] System is in the login menu state
-	\item[Input:] Developer will use the system as a regular user would on different web browsers
-	\item[Output:] The system will have the same fundamental functionalities on all browsers, with perhaps minor differences in visual presentation
-	\item[Derivation:] Developer will go through the various functionalities of the system on different web browsers, such as Chrome and Firefox, to assess whether or not it works and is usable on each
-	\item[Execution:] Developer Exploration Test
-\end{itemize}
-
-\subsubsection{Maintainability and Support Tests}
-
-\paragraph*{Test \#13: Test for Adaptability}
-\begin{itemize}
-	\item[Control:] Manual
-	\item[Initial State:] System is in the login menu state
-	\item[Input:] Developer will use the system as a regular user would on different mobile devices
-	\item[Output:] The system will have the same fundamental functionalities on different mobile devices, with perhaps minor differences in visual presentation
-	\item[Derivation:] Developer will go through the various functionalities of the system to assess whether or not it works and is usable on each
-	\item[Execution:] Developer Exploration Test
-\end{itemize}
-
-\subsubsection{Security Tests}
-
-\paragraph*{Test \#14: Test for Access}
-\begin{itemize}
-	\item[Control:] Manual
-	\item[Initial State:] System is in the main menu state
-	\item[Input:] Developer will click on their user profile and test the ability to change settings, as well as view the profile information of other users and ensure they cannot change their settings
-	\item[Output:] The Developer's user profile will be changed, with such changes being visible to other users (if the setting was one which can be viewed by others) with the content of other profiles being unchangeable
-	\item[Derivation:] Developer will ensure that the user's data is changable, that changes to public information can be viewed by others, that others' settings cannot be changed, and private information cannot be viewed by other users
-	\item[Execution:] Developer Exploration Test
-\end{itemize}
-
-\paragraph*{Test \#15: Test for Integrity}
-
-\begin{itemize}
-	\item[Control:] Manual
-	\item[Initial State:] System is in the main menu state
-	\item[Input:] Developer will change a profile or preference setting
-	\item[Output:] After different increments of time after the changes are made (such as immediately, 1 hour, and 24 hours after) the Developer will verify that all the changes made persist and do not revert to a prior state
-	\item[Derivation:] This is the best way to verify that information persists and retains its integrity over time, with it being possible to infer future persistence of information after the testing period
-	\item[Execution:] Developer Exploration Test
-\end{itemize}
-
-\paragraph*{Test \#16: Test for Privacy}
-
-There is no possible test for this requirement, as it pertains to a regulation on how users' information may be used by those with access to it.
-
-
-\subsection{Traceability Between Test Cases and Modules}
-
-\wss{Provide evidence that all of the modules have been considered.}
-
-\bibliographystyle{plainnat}
-
-\bibliography{../../refs/References}
 
 \newpage
 
