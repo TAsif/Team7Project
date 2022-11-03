@@ -128,55 +128,46 @@ The final objective of the V\&V document is to ensure that all external connecti
   come.}
 
 \subsection{Verification and Validation Team}
+The Verification and Validation Team will consist of Internal (team) and External members.
 
-\wss{You, your classmates and the course instructor.  Maybe your supervisor.
-  You shoud do more than list names.  You should say what each person's role is
-  for the project.  A table is a good way to summarize this information.}
+\begin{enumerate}
+	\item Team Members:
+	\begin{enumerate}
+		\item Ali: Ad-hoc or checklist verification of SRS, Design documents through peer-reviewing. Verification of implementation. For testing, responsible for creating/running frontend unit tests and system tests (Integration, Manual).
+		\item Andrew: Ad-hoc or checklist verification of SRS, Design documents through peer-reviewing. Verification of implementation. For testing, responsible for creating/running frontend unit tests and system tests.
+		\item Jarrod: Ad-hoc or checklist verification of SRS, Design documents through peer-reviewing. Verification of implementation. For testing, responsible for creating/running backend unit tests and system tests.
+		\item Madhi: Ad-hoc or checklist verification of SRS, Design documents through peer-reviewing. Verification of implementation. For testing, responsible for creating/running frontend \& backend unit tests and system tests.
+		\item Talha: Ad-hoc or checklist verification of SRS, Design documents through peer-reviewing. Verification of implementation. For testing, responsible for creating/running frontend \& backend unit tests and system tests.
+	\end{enumerate}
+	\item External Members
+	\begin{enumerate}
+		\item Classmates: Ad-hoc verification of SRS and Design documents.
+		\item Course TAs and Instructors: Ad-hoc verification of SRS and Design documents. Ad-hoc verification of the app implementation.
+		\item Users: Ad-hoc validation of application. 
+	\end{enumerate}
+\end{enumerate}
+
 
 \subsection{SRS Verification Plan}
+For the SRS Verification Plan, an ad-hoc approach will be followed. Teammates will peer-review work done for the SRS to verify whether both the functional and non-functional requirements serve validity. The SRS checklist will be followed prior to the finalization of a revision by a team member. Classmates and instructors will ad-hoc review the Revision 0 of the SRS, again to verify the requirements. 
 
-\wss{List any approaches you intend to use for SRS verification.  This may just
-  be ad hoc feedback from reviewers, like your classmates, or you may have
-  something more rigorous/systematic in mind..}
-
-\wss{Remember you have an SRS checklist}
 
 \subsection{Design Verification Plan}
-
-\wss{Plans for design verification}
-
-\wss{The review will include reviews by your classmates}
-
-\wss{Remember you have MG and MIS checklists}
+For the Design Verification Plan, an ad-hoc approach will be followed. Teammates will peer-review work done for the MG and MIS to verify whether both modules and their specification have validity. The MG and MIS checklists will be followed prior to the finalization of a revision by a team member. Classmates and instructors will ad-hoc review the Revision 0 of the MG and MIS, again to verify the modules. 
 
 \subsection{Implementation Verification Plan}
+Our Implementation Verification Plan will mainly consist of system testing and unit testing, as specified in the latter sections of this document. These tests will ensure that our implementation meets the criteria for our functional and non-functional requirements.
+Further means of implementation verification will also include code walkthroughs and reviews prior to pull request approvals. Static analysis and code coverage will also be incorporated to ensure that new code is written up-to standards. Verification tools will be explained in the latter sections.
 
-\wss{You should at least point to the tests listed in this document and the unit
-  testing plan.}
-
-\wss{In this section you would also give any details of any plans for static verification of
-  the implementation.  Potential techniques include code walkthroughs, code
-  inspection, static analyzers, etc.}
 
 \subsection{Automated Testing and Verification Tools}
+Unit tests will be written with a JavaScript unit testing framework called Jest. Jest also produces reports for code coverage metrics. Our code coverage goals include an overall 80\% coverage. A code coverage check will be done for every Pull Request made. Code coverage reports will be monitored to ensure that all functionality is being tested. Integration/system tests will be done with Selenium and Cucumber.js. Cucumber.js also has functionality to produce testing metrics and results. For static analysis and linting, ESLint and AirBnB styling will be utilized. This will ensure uniform coding standards and uncover any potential errors prior to compilation. Auomated code builds, through GitHub/Jenkins, will be present to ensure that every deployment made will not break the application. Refer to Development Plan for indepth details behind the tools:
 
-\wss{What tools are you using for automated testing.  Likely a unit testing
-  framework and maybe a profiling tool, like ValGrind.  Other possible tools
-  include a static analyzer, make, continuous integration tools, test coverage
-  tools, etc.  Explain your plans for summarizing code coverage metrics.
-  Linters are another important class of tools.  For the programming language
-  you select, you should look at the available linters.  There may also be tools
-  that verify that coding standards have been respected, like flake9 for
-  Python.}
+\citet{DevPlan}
 
-\wss{The details of this section will likely evolve as you get closer to the
-  implementation.}
 
 \subsection{Software Validation Plan}
-
-\wss{If there is any external data that can be used for validation, you should
-  point to it here.  If there are no plans for validation, you should state that
-  here.}
+For software validation, our team will host review sessions with target users of our application. During this session, these users will interact with the application and we will record their experiences. Based on the data collected, it will allow us to validate whether our requirements fulfills the goal of our application.
 
 \section{System Test Description}
 The tests outlined here will follow the following format:
